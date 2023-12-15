@@ -6,6 +6,11 @@ extern XEg::Application* XEg::CreateApplication();
 
 int main(int argc, char** argv)
 {
+	XEg::Log::Init();
+	XE_CORE_WARN("Init logging");
+	int a = 5;
+	XE_CLIENT_INFO("the value a = {}", a);
+
 	printf("XEngine Platform");
 	auto app = XEg::CreateApplication();
 	app->Run();

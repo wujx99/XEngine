@@ -10,7 +10,7 @@ public:
 	{
 		while (true)
 		{
-			std::cout << "this is the first app i create!" << std::endl;
+			
 		}
 	}
 private:
