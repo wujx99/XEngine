@@ -1291,6 +1291,10 @@
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\Log.h" />
+    <ClInclude Include="src\XEngine\Event\Event.h" />
+    <ClInclude Include="src\XEngine\Event\ApplicationEvent.h" />
+    <ClInclude Include="src\XEngine\Event\KeyEvent.h" />
+    <ClInclude Include="src\XEngine\Event\MouseEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\XEngine\Application.cpp">

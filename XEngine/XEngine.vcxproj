@@ -141,6 +141,10 @@
     <ClInclude Include="src\XEngine\Application.h" />
     <ClInclude Include="src\XEngine\Core.h" />
     <ClInclude Include="src\XEngine\EntryPoint.h" />
+    <ClInclude Include="src\XEngine\Event\ApplicationEvent.h" />
+    <ClInclude Include="src\XEngine\Event\Event.h" />
+    <ClInclude Include="src\XEngine\Event\KeyEvent.h" />
+    <ClInclude Include="src\XEngine\Event\MouseEvent.h" />
     <ClInclude Include="src\XEngine\Log.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />

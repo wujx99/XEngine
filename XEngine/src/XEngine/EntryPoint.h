@@ -11,7 +11,7 @@ int main(int argc, char** argv)
 	int a = 5;
 	XE_CLIENT_INFO("the value a = {}", a);
 
-	printf("XEngine Platform");
+	printf("XEngine Platform\n");
 	auto app = XEg::CreateApplication();
 	app->Run();
 	delete app;
