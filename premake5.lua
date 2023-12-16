@@ -36,6 +36,8 @@ project "XEngine"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "xepch.h"
+	pchsource "XEngine/src/xepch.cpp"
 
 	files
 	{

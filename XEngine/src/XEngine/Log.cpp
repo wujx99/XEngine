@@ -1,3 +1,4 @@
+#include "xepch.h"
 #include "Log.h"
 namespace XEg
 {

@@ -1,7 +1,6 @@
 #pragma once
-
 #include "Event.h"
-#include <sstream>
+
 namespace XEg
 {
 	class WindowResizeEvent :public Event

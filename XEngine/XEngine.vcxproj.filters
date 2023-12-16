@@ -7,6 +7,9 @@
     <Filter Include="src\XEngine">
       <UniqueIdentifier>{EA42F32B-56F8-6B21-DFEC-65F84BA16225}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\XEngine\Event">
+      <UniqueIdentifier>{BBCB5D69-27E2-5BFF-7059-E720DCAE2C87}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
@@ -41,6 +44,24 @@
     </ClInclude>
     <ClInclude Include="src\XEngine\EntryPoint.h">
       <Filter>src\XEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Event\ApplicationEvent.h">
+      <Filter>src\XEngine\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Event\Event.h">
+      <Filter>src\XEngine\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Event\KeyEvent.h">
+      <Filter>src\XEngine\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Event\MouseEvent.h">
+      <Filter>src\XEngine\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Log.h">
+      <Filter>src\XEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\xepch.h">
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="vendor\glm\glm\common.hpp">
       <Filter>vendor\glm\glm</Filter>
@@ -1290,16 +1311,16 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Log.h" />
-    <ClInclude Include="src\XEngine\Event\Event.h" />
-    <ClInclude Include="src\XEngine\Event\ApplicationEvent.h" />
-    <ClInclude Include="src\XEngine\Event\KeyEvent.h" />
-    <ClInclude Include="src\XEngine\Event\MouseEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\XEngine\Application.cpp">
       <Filter>src\XEngine</Filter>
     </ClCompile>
-    <ClCompile Include="src\XEngine\Log.cpp" />
+    <ClCompile Include="src\XEngine\Log.cpp">
+      <Filter>src\XEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xepch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

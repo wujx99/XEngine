@@ -1,3 +1,4 @@
+#include "xepch.h"
 #include "Application.h"
 
 #include "XEngine/Event/ApplicationEvent.h"

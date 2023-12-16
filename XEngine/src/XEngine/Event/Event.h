@@ -1,8 +1,8 @@
 #pragma once
+#include "xepch.h"
 #include "XEngine/Core.h"
 
-#include <string>
-#include <functional>
+
 namespace XEg
 {
 	enum class EventType
