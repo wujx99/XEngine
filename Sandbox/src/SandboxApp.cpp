@@ -1,6 +1,6 @@
 #include <XEngine.h>
 #include <iostream>
-
+#include "imgui/imgui.h"
 class ExampleLayer :public XEg::Layer
 {
 public:
@@ -24,6 +24,13 @@ public:
 		}
 	}
 
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello world");
+		ImGui::End();
+	}
+
 };
 
 class Sandbox : public XEg::Application
@@ -32,7 +39,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverLay(new XEg::ImGuiLayer());
 	}
 	~Sandbox () = default;
 	

@@ -1325,7 +1325,6 @@
     </ClInclude>
     <ClInclude Include="src\XEngine\Layer.h" />
     <ClInclude Include="src\XEngine\LayerStack.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\XEngine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\XEngine\Input.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
@@ -1347,8 +1346,8 @@
     </ClCompile>
     <ClCompile Include="src\XEngine\Layer.cpp" />
     <ClCompile Include="src\XEngine\LayerStack.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\XEngine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\XEngine\ImGui\ImGuiBuild.cpp" />
   </ItemGroup>
 </Project>

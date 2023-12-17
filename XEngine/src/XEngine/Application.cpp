@@ -17,6 +17,9 @@ namespace XEg
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallBack(BIND_EVENT_FN(OnEvent));
+
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverLay(m_ImGuiLayer);
 	}
 	void Application::Run()
 	{
@@ -29,6 +32,12 @@ namespace XEg
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+
+			// ImGUi Layer
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+				layer->OnImGuiRender();
+			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
 
