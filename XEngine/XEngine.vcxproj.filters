@@ -4,6 +4,12 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Platform">
+      <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\Windows">
+      <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\XEngine">
       <UniqueIdentifier>{EA42F32B-56F8-6B21-DFEC-65F84BA16225}</UniqueIdentifier>
     </Filter>
@@ -33,6 +39,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>src\Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\XEngine.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -58,6 +67,9 @@
       <Filter>src\XEngine\Event</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\Log.h">
+      <Filter>src\XEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Window.h">
       <Filter>src\XEngine</Filter>
     </ClInclude>
     <ClInclude Include="src\xepch.h">
@@ -1313,6 +1325,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\XEngine\Application.cpp">
       <Filter>src\XEngine</Filter>
     </ClCompile>

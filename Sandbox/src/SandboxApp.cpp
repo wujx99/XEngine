@@ -5,7 +5,7 @@ class Sandbox : public XEg::Application
 {
 public:
 	Sandbox () = default;
-	virtual ~Sandbox () = default;
+	~Sandbox () = default;
 	/*virtual void Run() override 
 	{
 
@@ -14,7 +14,6 @@ public:
 			
 		}
 	}*/
-private:
 
 };
 

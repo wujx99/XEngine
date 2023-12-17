@@ -61,7 +61,7 @@ namespace XEg
 		template<typename T>
 		bool Dispatch(EventFn<T> func)
 		{
-			if (T::getStaticType() == m_Event.EventType())
+			if (T::GetStaticType() == m_Event.GetEventType())
 			{
 				m_Event.m_Handled = func(*(T*)&m_Event);
 				return true;

@@ -68,6 +68,7 @@ project "XEngine"
 		"Glad",
 		"ImGui",
 		"opengl32.lib",
+		"dwmapi.lib",
 	}
 
 	filter "system:windows"
@@ -77,7 +78,6 @@ project "XEngine"
 		defines
 		{
 			"XE_PLATFORM_WINDOWS",
-			"XE_BUILD_DLL",
 			"GLFW_INCLUDE_NONE",
 		}
 
