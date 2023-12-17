@@ -5,6 +5,8 @@
 #include "XEngine/Event/KeyEvent.h"
 #include "XEngine/Event/MouseEvent.h"
 
+#include <glad/glad.h>
+
 namespace XEg
 {
 	static bool s_GLFWInitialized = false;
@@ -73,6 +75,8 @@ namespace XEg
 		m_Window = glfwCreateWindow((int)m_Data.Width, (int)m_Data.Height, m_Data.Title.c_str(), nullptr, nullptr);
 
 		glfwMakeContextCurrent(m_Window);
+		int success = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		XE_CORE_ASSERT(success, "Failed to initial glad!")
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		setVSync(true);
 
