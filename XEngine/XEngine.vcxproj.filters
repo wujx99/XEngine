@@ -1325,6 +1325,12 @@
     </ClInclude>
     <ClInclude Include="src\XEngine\Layer.h" />
     <ClInclude Include="src\XEngine\LayerStack.h" />
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\XEngine\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\XEngine\Input.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\XEngine\KeyCodes.h" />
+    <ClInclude Include="src\XEngine\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
@@ -1341,5 +1347,8 @@
     </ClCompile>
     <ClCompile Include="src\XEngine\Layer.cpp" />
     <ClCompile Include="src\XEngine\LayerStack.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\XEngine\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

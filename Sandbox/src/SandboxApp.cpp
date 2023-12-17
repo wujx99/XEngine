@@ -9,12 +9,19 @@ public:
 	{}
 	virtual void OnUpdate() override
 	{
-		//XE_CORE_INFO("Example Update!");
+		if (XEg::Input::IsKeyPressed(XE_KEY_TAB))
+			XE_CLIENT_TRACE("Tab key is pressed!(poll)");
 	}
 
 	virtual void OnEvent(XEg::Event& event)
 	{
-		XE_CLIENT_TRACE("{0}",event);
+		if (event.GetEventType() == XEg::EventType::KeyPressed)
+		{
+			XEg::KeyPressedEvent& e = (XEg::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == XE_KEY_TAB)
+				XE_CLIENT_TRACE("Tab key is pressed!(event)");
+			XE_CLIENT_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 
 };
