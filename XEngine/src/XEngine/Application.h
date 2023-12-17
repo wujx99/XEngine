@@ -3,6 +3,7 @@
 
 #include "Event/Event.h"
 #include "Event/ApplicationEvent.h"
+#include "LayerStack.h"
 
 #include "Window.h"
 namespace XEg {
@@ -14,11 +15,16 @@ namespace XEg {
 
 		void Run();
 		void OnEvent(Event&);
+
+		void PushLayer(Layer* layer);
+		void PushOverLay(Layer* overlay);
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
+
+		LayerStack m_LayerStack;
 
 	};
 

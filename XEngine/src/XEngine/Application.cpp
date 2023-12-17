@@ -1,7 +1,6 @@
 #include "xepch.h"
 #include "Application.h"
 
-#include "glad/glad.h"
 #include <GLFW/glfw3.h>
 
 
@@ -20,7 +19,11 @@ namespace XEg
 		while (m_Running)
 		{
 			
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate();
+
 			m_Window->OnUpdate();
+
 
 		}
 	}
@@ -30,8 +33,20 @@ namespace XEg
 		// be careful! we must use BIND_EVENT_FN to dispatch the correspond func to Event!
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
-		XE_CORE_TRACE("{0}", e);
+		for (auto itr = m_LayerStack.end(); itr != m_LayerStack.begin();)
+		{
+			(*--itr)->OnEvent(e);
+			if (e.Handled) break;  // be careful to this! blocked!
+		}
 
+	}
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+	void Application::PushOverLay(Layer* overlay)
+	{
+		m_LayerStack.PushOverLayer(overlay);
 	}
 	bool Application::OnWindowClose(WindowCloseEvent& e)
 	{

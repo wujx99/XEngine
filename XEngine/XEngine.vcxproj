@@ -149,6 +149,8 @@
     <ClInclude Include="src\XEngine\Event\Event.h" />
     <ClInclude Include="src\XEngine\Event\KeyEvent.h" />
     <ClInclude Include="src\XEngine\Event\MouseEvent.h" />
+    <ClInclude Include="src\XEngine\Layer.h" />
+    <ClInclude Include="src\XEngine\LayerStack.h" />
     <ClInclude Include="src\XEngine\Log.h" />
     <ClInclude Include="src\XEngine\Window.h" />
     <ClInclude Include="src\xepch.h" />
@@ -572,6 +574,8 @@
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\XEngine\Application.cpp" />
+    <ClCompile Include="src\XEngine\Layer.cpp" />
+    <ClCompile Include="src\XEngine\LayerStack.cpp" />
     <ClCompile Include="src\XEngine\Log.cpp" />
     <ClCompile Include="src\xepch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

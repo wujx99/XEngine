@@ -1323,6 +1323,8 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\XEngine\Layer.h" />
+    <ClInclude Include="src\XEngine\LayerStack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
@@ -1337,5 +1339,7 @@
     <ClCompile Include="src\xepch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\XEngine\Layer.cpp" />
+    <ClCompile Include="src\XEngine\LayerStack.cpp" />
   </ItemGroup>
 </Project>
