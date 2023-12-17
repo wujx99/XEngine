@@ -9,7 +9,7 @@ public:
 	{}
 	virtual void OnUpdate() override
 	{
-		XE_CORE_INFO("Example Update!");
+		//XE_CORE_INFO("Example Update!");
 	}
 
 	virtual void OnEvent(XEg::Event& event)
@@ -25,6 +25,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverLay(new XEg::ImGuiLayer());
 	}
 	~Sandbox () = default;
 	

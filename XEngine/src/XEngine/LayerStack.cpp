@@ -21,6 +21,7 @@ namespace XEg
 	}
 	void LayerStack::PushOverLayer(Layer* overlay)
 	{
+		overlay->OnAttach();
 		m_Layers.emplace_back(overlay);
 	}
 	void LayerStack::PopLayer(Layer* layer)

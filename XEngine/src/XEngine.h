@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include "XEngine/Layer.h"
+#include "XEngine/ImGui/ImGuiLayer.h"
 
 #include "XEngine/Application.h"
 #include "XEngine/Log.h"
