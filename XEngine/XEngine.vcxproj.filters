@@ -1333,6 +1333,9 @@
     <ClInclude Include="src\XEngine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\XEngine\Renderer\Shader.h" />
+    <ClInclude Include="src\XEngine\Renderer\Renderer.h" />
+    <ClInclude Include="src\XEngine\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
@@ -1354,5 +1357,8 @@
     <ClCompile Include="src\XEngine\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\XEngine\Renderer\Shader.cpp" />
+    <ClCompile Include="src\XEngine\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\XEngine\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
   </ItemGroup>
 </Project>
