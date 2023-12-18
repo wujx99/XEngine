@@ -7,6 +7,7 @@
 
 #include "Window.h"
 #include "ImGui/ImGuiLayer.h"
+#include "Renderer/Shader.h"
 namespace XEg {
 	class Application
 	{
@@ -28,6 +29,9 @@ namespace XEg {
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
+
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 
 		LayerStack m_LayerStack;
 	private:

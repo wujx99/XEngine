@@ -18,6 +18,11 @@ namespace XEg
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		XE_CORE_ASSERT(status, "Failed to initial glad");
 
+		XE_CORE_INFO("OpenGL Info:");
+		XE_CORE_INFO("  Vendor: {0}", (const char*)glGetString(GL_VENDOR));
+		XE_CORE_INFO("  Renderer: {0}", (const char*)glGetString(GL_RENDERER));
+		XE_CORE_INFO("  Version: {0}", (const char*)glGetString(GL_VERSION));
+
 	}
 	void OpenGLContext::SwapBuffers()
 	{

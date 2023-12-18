@@ -159,6 +159,7 @@
     <ClInclude Include="src\XEngine\Log.h" />
     <ClInclude Include="src\XEngine\MouseButtonCodes.h" />
     <ClInclude Include="src\XEngine\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\XEngine\Renderer\Shader.h" />
     <ClInclude Include="src\XEngine\Window.h" />
     <ClInclude Include="src\xepch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -588,6 +589,7 @@
     <ClCompile Include="src\XEngine\Layer.cpp" />
     <ClCompile Include="src\XEngine\LayerStack.cpp" />
     <ClCompile Include="src\XEngine\Log.cpp" />
+    <ClCompile Include="src\XEngine\Renderer\Shader.cpp" />
     <ClCompile Include="src\xepch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
