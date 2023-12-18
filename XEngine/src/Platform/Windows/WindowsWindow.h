@@ -1,5 +1,6 @@
 #pragma once
 #include "XEngine/Window.h"
+#include "XEngine/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -26,6 +27,7 @@ namespace XEg
 		virtual void ShutDown();
 	private:
 		GLFWwindow* m_Window; // the actual window
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

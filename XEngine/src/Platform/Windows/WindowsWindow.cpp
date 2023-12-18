@@ -5,7 +5,7 @@
 #include "XEngine/Event/KeyEvent.h"
 #include "XEngine/Event/MouseEvent.h"
 
-#include <glad/glad.h>
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace XEg
 {
@@ -36,7 +36,7 @@ namespace XEg
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 
@@ -74,9 +74,9 @@ namespace XEg
 
 		m_Window = glfwCreateWindow((int)m_Data.Width, (int)m_Data.Height, m_Data.Title.c_str(), nullptr, nullptr);
 
-		glfwMakeContextCurrent(m_Window);
-		int success = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		XE_CORE_ASSERT(success, "Failed to initial glad!")
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		setVSync(true);
 
