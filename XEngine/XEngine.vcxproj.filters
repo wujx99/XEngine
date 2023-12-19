@@ -1372,5 +1372,6 @@
     <ClCompile Include="src\XEngine\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\XEngine\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\XEngine\Core\TimeStep.h" />
   </ItemGroup>
 </Project>

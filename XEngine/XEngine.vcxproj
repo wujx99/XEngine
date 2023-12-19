@@ -596,6 +596,7 @@
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\XEngine\Application.cpp" />
+    <ClCompile Include="src\XEngine\Core\TimeStep.h" />
     <ClCompile Include="src\XEngine\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\XEngine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\XEngine\Layer.cpp" />
