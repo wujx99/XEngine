@@ -1,7 +1,10 @@
 #include "xepch.h"
 #include "Application.h"
-#include <glad/glad.h>
+
 #include "Input.h"
+
+#include "Renderer/Renderer.h"
+#include "Renderer/RenderCommand.h"
 
 namespace XEg
 {
@@ -133,20 +136,18 @@ namespace XEg
 
 		while (m_Running)
 		{
-			glClearColor(.1, .1, .1, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			glm::vec4 color(.1, .1, .1, 1);
+			RenderCommand::SetClearColor(color);
+			RenderCommand::Clear();
+			Renderer::BeginScene();
 
 			m_BlueShader->Bind();
-
 			// must before m_Window->OnUpdate() == (glfwSwapBuffers(m_WindowHandle))
-			m_SquareVA->Bind();
-			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_SquareVA); // Bind and RenderCommand::DrawIndexed()
 
 			m_Shader->Bind();
-
 			// must before m_Window->OnUpdate() == (glfwSwapBuffers(m_WindowHandle))
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_VertexArray);
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();

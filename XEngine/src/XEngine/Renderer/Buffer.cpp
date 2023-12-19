@@ -9,10 +9,10 @@ namespace XEg
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None: 
+		case RendererAPI::API::None: 
 			XE_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); 
 			return nullptr;
-		case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 			return new OpenGLVertexBuffer(vertices, size);
 		
 		}
@@ -25,10 +25,10 @@ namespace XEg
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:
+		case RendererAPI::API::None:
 			XE_CORE_ASSERT(false, "RendererAPI::None is currently not supported!");
 			return nullptr;
-		case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 			return new OpenGLIndexBuffer(indexs, count);
 		
 		}
