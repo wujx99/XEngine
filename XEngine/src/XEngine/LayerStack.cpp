@@ -28,7 +28,7 @@ namespace XEg
 	void LayerStack::PopLayer(Layer* layer)
 	{
 		auto  itr = std::find(m_Layers.begin(), m_Layers.end(), layer);
-		if (itr != m_Layers.end())
+		if (itr != m_Layers.begin() + m_LayerIndex)
 		{
 			layer->OnDetach();
 			m_Layers.erase(itr);

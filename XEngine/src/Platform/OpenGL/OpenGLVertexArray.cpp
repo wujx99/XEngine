@@ -46,19 +46,18 @@ namespace XEg
 
 		m_VertexBuffers.push_back(vertexBuffer);
 
-		uint32_t index = 0;
 		auto layout = vertexBuffer->GetLayout();
 		for (auto& element : layout)
 		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index,
+			glEnableVertexAttribArray(m_VertexBufferIndex);
+			glVertexAttribPointer(m_VertexBufferIndex,
 				element.GetComponentCount(),
 				ShaderDataTypeToOpenGLBaseType(element.Type),
 				element.Normalized ? GL_TRUE : GL_FALSE,
 				layout.GetStride(),
-				(const void*)element.Offset
+				(const void*)(intptr_t)element.Offset
 				);
-			index++;
+			m_VertexBufferIndex++;
 		}
 	}
 	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
