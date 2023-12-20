@@ -1,6 +1,6 @@
 #include "xepch.h"
 #include "Application.h"
-
+#include "Renderer/Renderer.h"
 #include <GLFW/glfw3.h>
 
 
@@ -18,6 +18,8 @@ namespace XEg
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallBack(BIND_EVENT_FN(OnEvent));
+
+		Renderer::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverLay(m_ImGuiLayer);

@@ -161,6 +161,7 @@ public:
 		m_TextureShader.reset(XEg::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
 
 		m_Texture = XEg::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_LogoTexture = XEg::Texture2D::Create("assets/textures/Chernologo.png");
 		
 		m_TextureShader->Bind();
 		std::dynamic_pointer_cast<XEg::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
@@ -210,6 +211,9 @@ public:
 		m_Texture->Bind();
 		XEg::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.f), glm::vec3(1.5f)));
 
+		m_LogoTexture->Bind();
+		XEg::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.f), glm::vec3(1.5f)));
+
 	}
 
 	virtual void OnEvent(XEg::Event& event)
@@ -233,6 +237,7 @@ private:
 	XEg::Ref<XEg::VertexArray> m_SquareVA;
 
 	XEg::Ref<XEg::Texture2D> m_Texture;
+	XEg::Ref<XEg::Texture2D> m_LogoTexture;
 
 	XEg::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
