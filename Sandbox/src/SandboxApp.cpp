@@ -22,7 +22,7 @@ public:
 			 0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 0.1f,
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f,
 		};
-		std::shared_ptr<XEg::VertexBuffer> vertexBuffer;
+		XEg::Ref<XEg::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(XEg::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 
@@ -38,29 +38,30 @@ public:
 		unsigned int indexs[3] = {
 			0,1,2,
 		};
-		std::shared_ptr<XEg::IndexBuffer> indexBuffer;
+		XEg::Ref<XEg::IndexBuffer> indexBuffer;
 		indexBuffer.reset(XEg::IndexBuffer::Create(indexs, sizeof(indexs) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 
 		m_SquareVA.reset(XEg::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
 		};
 
-		std::shared_ptr<XEg::VertexBuffer> squareVB;
+		XEg::Ref<XEg::VertexBuffer> squareVB;
 		squareVB.reset(XEg::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
-			{ XEg::ShaderDataType::Float3, "a_Position" }
+			{ XEg::ShaderDataType::Float3, "a_Position" },
+			{ XEg::ShaderDataType::Float2, "a_TexCoord"}
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<XEg::IndexBuffer> squareIB;
+		XEg::Ref<XEg::IndexBuffer> squareIB;
 		squareIB.reset(XEg::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -128,6 +129,42 @@ public:
 		)";
 
 		m_FlatColorShader.reset(XEg::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+
+		std::string textureShaderVertexSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
+			out vec2 v_TexCoord;
+			void main()
+			{
+				v_TexCoord = a_TexCoord;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);	
+			}
+		)";
+
+		std::string textureShaderFragmentSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color;
+			in vec2 v_TexCoord;
+			
+			uniform sampler2D u_Texture;
+			void main()
+			{
+				color = texture(u_Texture, v_TexCoord);
+			}
+		)";
+
+		m_TextureShader.reset(XEg::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		m_Texture = XEg::Texture2D::Create("assets/textures/Checkerboard.png");
+		
+		m_TextureShader->Bind();
+		std::dynamic_pointer_cast<XEg::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+
 	}
 	virtual void OnUpdate(XEg::TimeStep ts) override
 	{
@@ -169,6 +206,10 @@ public:
 				XEg::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
+
+		m_Texture->Bind();
+		XEg::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.f), glm::vec3(1.5f)));
+
 	}
 
 	virtual void OnEvent(XEg::Event& event)
@@ -185,11 +226,13 @@ public:
 
 private:
 	
-	std::shared_ptr<XEg::Shader> m_Shader;
-	std::shared_ptr<XEg::VertexArray> m_VertexArray;
+	XEg::Ref<XEg::Shader> m_Shader;
+	XEg::Ref<XEg::VertexArray> m_VertexArray;
 
-	std::shared_ptr<XEg::Shader> m_FlatColorShader;
-	std::shared_ptr<XEg::VertexArray> m_SquareVA;
+	XEg::Ref<XEg::Shader> m_FlatColorShader, m_TextureShader;
+	XEg::Ref<XEg::VertexArray> m_SquareVA;
+
+	XEg::Ref<XEg::Texture2D> m_Texture;
 
 	XEg::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

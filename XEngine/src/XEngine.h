@@ -19,6 +19,7 @@
 #include "XEngine/Renderer/RenderCommand.h"
 
 #include "XEngine/Renderer/Shader.h"
+#include "XEngine/Renderer/Texture.h"
 #include "XEngine/Renderer/Buffer.h"
 #include "XEngine/Renderer/VertexArray.h"
 		  
