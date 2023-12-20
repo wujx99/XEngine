@@ -8,7 +8,5 @@ namespace XEg
 	{
 
 	}
-	Layer::~Layer()
-	{
-	}
+	
 }

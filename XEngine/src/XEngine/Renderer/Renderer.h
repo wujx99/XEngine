@@ -21,6 +21,6 @@ namespace XEg
 		{
 			glm::mat4 ViewProjMatrix;
 		};
-		static SceneData* m_SceneData;
+		static SceneData* s_SceneData;
 	};
 }
