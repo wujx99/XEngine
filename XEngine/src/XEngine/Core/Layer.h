@@ -1,9 +1,9 @@
 #pragma once
 
-#include "XEngine/Core.h"
+#include "Core.h"
 #include "XEngine/Event/Event.h"
 
-#include "XEngine/Core/TimeStep.h"
+#include "TimeStep.h"
 namespace XEg
 {
 	class Layer

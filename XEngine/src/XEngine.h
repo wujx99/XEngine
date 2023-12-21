@@ -3,16 +3,16 @@
 // For use by XEngine application
 
 #include <stdio.h>
-#include "XEngine/Layer.h"
+#include "XEngine/Core/Layer.h"
 #include "XEngine/ImGui/ImGuiLayer.h"
 
-#include "XEngine/Application.h"
-#include "XEngine/Log.h"
+#include "XEngine/Core/Application.h"
+#include "XEngine/Core/Log.h"
 
-#include "XEngine/Input.h"
-#include "XEngine/KeyCodes.h"
-#include "XEngine/MouseButtonCodes.h"
-#include "XEngine/OrthographicCameraController.h"
+#include "XEngine/Core/Input.h"
+#include "XEngine/Core/KeyCodes.h"
+#include "XEngine/Core/MouseButtonCodes.h"
+#include "XEngine/Renderer/OrthographicCameraController.h"
 
 #include "XEngine/Core/TimeStep.h"
 // ---Renderer-----------------
@@ -26,5 +26,5 @@
 		  
 #include "XEngine/Renderer/OrthographicCamera.h"
 // ---Entry Point--------------
-#include "XEngine/EntryPoint.h"
+#include "XEngine/Core/EntryPoint.h"
 // -----------------------------

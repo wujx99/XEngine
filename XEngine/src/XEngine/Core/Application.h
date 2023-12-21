@@ -2,11 +2,11 @@
 #include "Core.h"
 
 #include "Window.h"
-#include "Event/Event.h"
-#include "Event/ApplicationEvent.h"
+#include "XEngine/Event/Event.h"
+#include "XEngine/Event/ApplicationEvent.h"
 #include "LayerStack.h"
 
-#include "ImGui/ImGuiLayer.h"
+#include "XEngine/ImGui/ImGuiLayer.h"
 
 namespace XEg {
 	class Application

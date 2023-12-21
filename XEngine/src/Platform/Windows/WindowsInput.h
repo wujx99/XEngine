@@ -1,5 +1,5 @@
 #pragma once
-#include "XEngine/Input.h"
+#include "XEngine/Core/Input.h"
 
 namespace XEg
 {

@@ -13,7 +13,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "XEngine/Log.h"
+#include "XEngine/Core/Log.h"
 
 #ifdef XE_PLATFORM_WINDOWS
 	#include <Windows.h>

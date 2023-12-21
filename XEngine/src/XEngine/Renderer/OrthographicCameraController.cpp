@@ -1,8 +1,8 @@
 #include "xepch.h"
 #include "OrthographicCameraController.h"
 
-#include "XEngine/Input.h"
-#include "XEngine/KeyCodes.h"
+#include "XEngine/Core/Input.h"
+#include "XEngine/Core/KeyCodes.h"
 
 namespace XEg
 {

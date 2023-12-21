@@ -1,6 +1,8 @@
 #include "xepch.h"
 #include "Application.h"
-#include "Renderer/Renderer.h"
+
+#include "XEngine/Core/Log.h"
+#include "XEngine/Renderer/Renderer.h"
 #include <GLFW/glfw3.h>
 
 

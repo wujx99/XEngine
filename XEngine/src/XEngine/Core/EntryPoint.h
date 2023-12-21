@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Core.h"
+
 #ifdef XE_PLATFORM_WINDOWS
 
 extern XEg::Application* XEg::CreateApplication();
