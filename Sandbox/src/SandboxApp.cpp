@@ -97,7 +97,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(XEg::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = XEg::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -128,17 +128,17 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(XEg::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = XEg::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
 		
 
-		m_TextureShader.reset(XEg::Shader::Create("assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = XEg::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_LogoTexture = XEg::Texture2D::Create("assets/textures/Chernologo.png");
 		
-		m_TextureShader->Bind();
-		std::dynamic_pointer_cast<XEg::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		textureShader->Bind();
+		std::dynamic_pointer_cast<XEg::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 
 	}
 	virtual void OnUpdate(XEg::TimeStep ts) override
@@ -181,12 +181,12 @@ public:
 				XEg::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
-
+		auto textureShader = m_ShaderLibrary.Get("Texture");
 		m_Texture->Bind();
-		XEg::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.f), glm::vec3(1.5f)));
+		XEg::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.f), glm::vec3(1.5f)));
 
 		m_LogoTexture->Bind();
-		XEg::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.f), glm::vec3(1.5f)));
+		XEg::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.f), glm::vec3(1.5f)));
 
 	}
 
@@ -205,9 +205,10 @@ public:
 private:
 	
 	XEg::Ref<XEg::Shader> m_Shader;
+	XEg::ShaderLibrary m_ShaderLibrary;
 	XEg::Ref<XEg::VertexArray> m_VertexArray;
 
-	XEg::Ref<XEg::Shader> m_FlatColorShader, m_TextureShader;
+	XEg::Ref<XEg::Shader> m_FlatColorShader;
 	XEg::Ref<XEg::VertexArray> m_SquareVA;
 
 	XEg::Ref<XEg::Texture2D> m_Texture;
