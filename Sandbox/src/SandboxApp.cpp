@@ -11,7 +11,7 @@ class ExampleLayer :public XEg::Layer
 {
 public:
 	ExampleLayer()
-		:Layer("Example"),m_Camera(-1.6f, 1.6f, -0.9f, 0.9f),m_CameraPosition(0.f)
+		:Layer("Example"), m_CameraController(1280.f / 720.f)
 	{
 		// to draw triangle
 		m_VertexArray.reset(XEg::VertexArray::Create());
@@ -143,29 +143,15 @@ public:
 	}
 	virtual void OnUpdate(XEg::TimeStep ts) override
 	{
-		if (XEg::Input::IsKeyPressed(XE_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		else if (XEg::Input::IsKeyPressed(XE_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
-
-		if (XEg::Input::IsKeyPressed(XE_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-		else if (XEg::Input::IsKeyPressed(XE_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-
-		if (XEg::Input::IsKeyPressed(XE_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-		if (XEg::Input::IsKeyPressed(XE_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
+		m_CameraController.OnUpdate(ts);
+		
 
 		glm::vec4 color(.1, .1, .1, 1);
 		XEg::RenderCommand::SetClearColor(color);
 		XEg::RenderCommand::Clear();
 
-		m_Camera.SetPostion(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
-
-		XEg::Renderer::BeginScene(m_Camera);
+	
+		XEg::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
@@ -192,7 +178,7 @@ public:
 
 	virtual void OnEvent(XEg::Event& event)
 	{
-		
+		m_CameraController.OnEvent(event);
 	}
 
 	virtual void OnImGuiRender() override
@@ -214,11 +200,7 @@ private:
 	XEg::Ref<XEg::Texture2D> m_Texture;
 	XEg::Ref<XEg::Texture2D> m_LogoTexture;
 
-	XEg::OrthographicCamera m_Camera;
-	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 0.1f;
-	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 10.0f;
+	XEg::OrthographicCameraController m_CameraController;
 
 	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
 };

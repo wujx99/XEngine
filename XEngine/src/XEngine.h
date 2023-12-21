@@ -12,6 +12,7 @@
 #include "XEngine/Input.h"
 #include "XEngine/KeyCodes.h"
 #include "XEngine/MouseButtonCodes.h"
+#include "XEngine/OrthographicCameraController.h"
 
 #include "XEngine/Core/TimeStep.h"
 // ---Renderer-----------------
