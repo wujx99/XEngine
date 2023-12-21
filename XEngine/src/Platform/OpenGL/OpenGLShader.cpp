@@ -7,7 +7,7 @@
 #include <glm/gtc/type_ptr.hpp>
 namespace XEg
 {
-	static GLenum ShaderTypeFormString(const std::string& type)
+	static GLenum ShaderTypeFromString(const std::string& type)
 	{
 		if (type == "vertex")
 			return GL_VERTEX_SHADER;
@@ -37,8 +37,6 @@ namespace XEg
 		shaderSource[GL_VERTEX_SHADER] = vertexSrc;
 		shaderSource[GL_FRAGMENT_SHADER] = fragmentSrc;
 		Compile(shaderSource);
-
-		
 	}
 
 	OpenGLShader::~OpenGLShader()
@@ -106,12 +104,14 @@ namespace XEg
 
 			size_t begin = pos + tokenLength + 1;
 			std::string type = source.substr(begin, eol - begin);
-			XE_CORE_ASSERT(ShaderTypeFormString(type), "Invalid shader type specified");
+			XE_CORE_ASSERT(ShaderTypeFromString(type), "Invalid shader type specified");
 
-			size_t nextLinePos = source.find_first_not_of("\n", eol);
-			pos = source.find(token, nextLinePos);
-			shaderSource[ShaderTypeFormString(type)] = 
-				source.substr(nextLinePos, pos - (nextLinePos == std::string::npos? source.size()-1:nextLinePos));
+			size_t nextLinePos = source.find_first_not_of("\n", eol); //Start of shader code after shader type declaration line
+			XE_CORE_ASSERT(nextLinePos != std::string::npos, "Syntax error");
+			pos = source.find(token, nextLinePos); //Start of next shader type declaration line
+
+			shaderSource[ShaderTypeFromString(type)] = 
+				(pos == std::string::npos) ? source.substr(nextLinePos) : source.substr(nextLinePos, pos - nextLinePos);
 
 		}
 
