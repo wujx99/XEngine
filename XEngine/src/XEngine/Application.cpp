@@ -28,16 +28,20 @@ namespace XEg
 	}
 	void Application::Run()
 	{
-		float time = (float)glfwGetTime();
-		TimeStep ts = time - m_LastFrameTime;
-		m_LastFrameTime = time;
+		
 
 		while (m_Running)
 		{
-			
+			float time = (float)glfwGetTime();
+			TimeStep ts = time - m_LastFrameTime;
+			m_LastFrameTime = time;
 
-			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate(ts);
+			if (!m_Minimized)
+			{
+				for (Layer* layer : m_LayerStack)
+					layer->OnUpdate(ts);
+			}
+			
 
 			// ImGUi Layer
 			m_ImGuiLayer->Begin();
@@ -55,6 +59,7 @@ namespace XEg
 		EventDispatcher dispatcher(e);
 		// be careful! we must use BIND_EVENT_FN to dispatch the correspond func to Event!
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
 
 		for (auto itr = m_LayerStack.end(); itr != m_LayerStack.begin();)
 		{
@@ -75,5 +80,16 @@ namespace XEg
 	{
 		m_Running = false;
 		return true;
+	}
+	bool Application::OnWindowResize(WindowResizeEvent& e)
+	{
+		if (e.GetWidth() == 0 || e.GetHeight() == 0)
+		{
+			m_Minimized = true;
+			return false;
+		}
+
+		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+		return false;
 	}
 }
