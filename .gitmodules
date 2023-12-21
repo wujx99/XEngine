@@ -1,3 +1,6 @@
 [submodule "XEngine/vendor/GLFW"]
 	path = XEngine/vendor/GLFW
 	url = git@github.com:TheCherno/glfw.git
+[submodule "XEngine/vendor/imgui"]
+	path = XEngine/vendor/imgui
+	url = git@github.com:TheCherno/imgui.git
