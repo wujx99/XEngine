@@ -34,5 +34,6 @@ namespace XEg
 		}
 	
 		XE_CORE_ASSERT(false, "Unknown RendererAPI!");
+		return nullptr;
 	}
 }

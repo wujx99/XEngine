@@ -81,7 +81,6 @@ project "XEngine"
 
 		defines
 		{
-			"XE_PLATFORM_WINDOWS",
 			"GLFW_INCLUDE_NONE",
 		}
 
@@ -136,11 +135,7 @@ project "Sandbox"
 		
 		systemversion "latest"
 
-		defines
-		{
-			"XE_PLATFORM_WINDOWS",
-		}
-
+		
 		
 	filter "configurations:Debug"
 		defines "XE_DEBUG"
