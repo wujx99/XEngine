@@ -1,8 +1,9 @@
 #include "xepch.h"
 #include "Shader.h"
+
 #include "Platform/OpenGL/OpenGLShader.h"
 
-#include "Renderer.h"
+#include "XEngine/Renderer/Renderer.h"
 
 namespace XEg
 {
@@ -17,7 +18,7 @@ namespace XEg
 			XE_CORE_ASSERT(false, "RendererAPI::None is currently not supported!");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLShader>(path);
+			return CreateRef<OpenGLShader>(path);
 
 		}
 		XE_CORE_ASSERT(false, "Unknown RendererAPI!");
@@ -32,7 +33,7 @@ namespace XEg
 			XE_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); 
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
+			return CreateRef<OpenGLShader>(name, vertexSrc, fragmentSrc);
 
 		}
 		XE_CORE_ASSERT(false, "Unknown RendererAPI!");

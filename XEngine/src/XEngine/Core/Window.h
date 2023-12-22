@@ -2,7 +2,7 @@
 
 #include "xepch.h"
 
-#include "Core.h"
+#include "XEngine/Core/Core.h"
 #include "XEngine/Event/Event.h"
 
 namespace XEg
@@ -36,7 +36,7 @@ namespace XEg
 
 		virtual void* GetNativeWindow() const = 0;
 
-		static Window* Create(const WindowProps& props = WindowProps());
+		static Scope<Window> Create(const WindowProps& props = WindowProps());
 
 
 	};

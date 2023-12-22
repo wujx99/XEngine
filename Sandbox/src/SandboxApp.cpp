@@ -3,7 +3,7 @@
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
-#include "imgui/imgui.h"
+#include <imgui/imgui.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
@@ -25,7 +25,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f,
 		};
 		XEg::Ref<XEg::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(XEg::VertexBuffer::Create(vertices, sizeof(vertices)));
+		vertexBuffer = XEg::VertexBuffer::Create(vertices, sizeof(vertices));
 
 
 		XEg::BufferLayout layout = {
@@ -41,7 +41,7 @@ public:
 			0,1,2,
 		};
 		XEg::Ref<XEg::IndexBuffer> indexBuffer;
-		indexBuffer.reset(XEg::IndexBuffer::Create(indexs, sizeof(indexs) / sizeof(uint32_t)));
+		indexBuffer = XEg::IndexBuffer::Create(indexs, sizeof(indexs) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 
@@ -55,7 +55,7 @@ public:
 		};
 
 		XEg::Ref<XEg::VertexBuffer> squareVB;
-		squareVB.reset(XEg::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		squareVB = XEg::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		squareVB->SetLayout({
 			{ XEg::ShaderDataType::Float3, "a_Position" },
 			{ XEg::ShaderDataType::Float2, "a_TexCoord"}
@@ -64,7 +64,7 @@ public:
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
 		XEg::Ref<XEg::IndexBuffer> squareIB;
-		squareIB.reset(XEg::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		squareIB = XEg::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 		// Shader
@@ -140,7 +140,7 @@ public:
 		m_LogoTexture = XEg::Texture2D::Create("assets/textures/Chernologo.png");
 		
 		textureShader->Bind();
-		std::dynamic_pointer_cast<XEg::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
+		textureShader->SetInt("u_Texture", 0);
 
 	}
 	virtual void OnUpdate(XEg::TimeStep ts) override
@@ -158,7 +158,7 @@ public:
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
 		m_FlatColorShader->Bind();
-		std::dynamic_pointer_cast<XEg::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+		m_FlatColorShader->SetFloat3("u_Color", m_SquareColor);
 
 		for (int y = 0; y < 20; y++)
 		{

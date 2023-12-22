@@ -17,9 +17,9 @@ namespace XEg
 	}
 
 	// from interface Window 
-	Window* Window::Create(const WindowProps& props)
+	Scope<Window> Window::Create(const WindowProps& props)
 	{
-		return new WindowsWindow(props);
+		return CreateScope<WindowsWindow>(props);
 	}
 
 
@@ -74,7 +74,7 @@ namespace XEg
 
 		m_Window = glfwCreateWindow((int)m_Data.Width, (int)m_Data.Height, m_Data.Title.c_str(), nullptr, nullptr);
 
-		m_Context = CreateScope<OpenGLContext>(m_Window);
+		m_Context =OpenGLContext::Create(m_Window);
 		m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);

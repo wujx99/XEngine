@@ -1,10 +1,10 @@
 #pragma once
-#include "Core.h"
+#include "XEngine/Core/Core.h"
+#include "XEngine/Core/Window.h"
+#include "XEngine/Core/LayerStack.h"
 
-#include "Window.h"
 #include "XEngine/Event/Event.h"
 #include "XEngine/Event/ApplicationEvent.h"
-#include "LayerStack.h"
 
 #include "XEngine/ImGui/ImGuiLayer.h"
 
@@ -13,7 +13,7 @@ namespace XEg {
 	{
 	public:
 		Application();
-		virtual ~Application() = default;
+		virtual ~Application();
 
 		void Run();
 		void OnEvent(Event&);

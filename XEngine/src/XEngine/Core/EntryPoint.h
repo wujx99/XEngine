@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core.h"
+#include "XEngine/Core/Core.h"
 
 #ifdef XE_PLATFORM_WINDOWS
 

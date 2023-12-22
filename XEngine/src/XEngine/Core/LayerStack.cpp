@@ -2,10 +2,7 @@
 #include "LayerStack.h"
 namespace XEg
 {
-	LayerStack::LayerStack()
-		:m_LayerIndex(0)
-	{
-	}
+	
 	LayerStack::~LayerStack()
 	{
 		for (Layer* layer : m_Layers)

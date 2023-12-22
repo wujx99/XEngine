@@ -1,6 +1,6 @@
 #pragma once
-#include "OrthographicCamera.h"
-#include "Texture.h"
+#include "XEngine/Renderer/OrthographicCamera.h"
+#include "XEngine/Renderer/Texture.h"
 namespace XEg
 {
 

@@ -8,7 +8,6 @@
 
 namespace XEg
 {
-#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
 
@@ -19,7 +18,7 @@ namespace XEg
 		s_Instance = this;
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
-		m_Window->SetEventCallBack(BIND_EVENT_FN(OnEvent));
+		m_Window->SetEventCallBack(XE_BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();
 
@@ -27,6 +26,10 @@ namespace XEg
 		PushOverLay(m_ImGuiLayer);
 
 		
+	}
+	Application::~Application()
+	{
+		Renderer::Shutdown();
 	}
 	void Application::Run()
 	{
@@ -60,8 +63,8 @@ namespace XEg
 	{
 		EventDispatcher dispatcher(e);
 		// be careful! we must use BIND_EVENT_FN to dispatch the correspond func to Event!
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
+		dispatcher.Dispatch<WindowCloseEvent>(XE_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(XE_BIND_EVENT_FN(Application::OnWindowResize));
 
 		for (auto itr = m_LayerStack.end(); itr != m_LayerStack.begin();)
 		{

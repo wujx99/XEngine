@@ -44,20 +44,7 @@
 #endif // !_WIN32
 
 
-// DLL support
-#ifdef XE_PLATFORM_WINDOWS
-	#if XE_DYNAMIC_LINK
-		#ifdef XE_BUILD_DLL
-			#define XEg_API __declspec(dllexport)
-		#else
-			#define XEg_API __declspec(dllimport)
-		#endif
-	#else
-		#define XEg_API
-	#endif
-#else
-	#error XEngine only supports Windows!
-#endif // End of DLL support
+
 
 #ifdef XE_DEBUG
 	#define XE_CORE_ASSERT(x, ...) {if(!(x)) { XE_CORE_ERROR("Assert failed: {0}", __VA_ARGS__); __debugbreak();}}

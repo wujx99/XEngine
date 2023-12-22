@@ -1,6 +1,6 @@
 #pragma once
 #include "XEngine/Core/Core.h"
-#include "Layer.h"
+#include "XEngine/Core/Layer.h"
 
 #include <vector>
 namespace XEg
@@ -8,7 +8,7 @@ namespace XEg
 	class LayerStack
 	{
 	public:
-		LayerStack();
+		LayerStack() = default;
 		~LayerStack();
 
 		void PushLayer(Layer* layer);
@@ -22,6 +22,6 @@ namespace XEg
 
 	private:
 		std::vector<Layer*> m_Layers;
-		unsigned int m_LayerIndex;
+		unsigned int m_LayerIndex{ 0 };
 	};
 }
