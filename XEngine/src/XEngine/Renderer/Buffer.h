@@ -45,7 +45,7 @@ namespace XEg
 		std::string Name; //for debug
 		ShaderDataType Type;
 		uint32_t Size;
-		uint32_t Offset;
+		size_t Offset;
 		bool Normalized;
 
 		BufferElement() = default;
@@ -103,7 +103,7 @@ namespace XEg
 	private:
 		void CalcStrideAndOffset()
 		{
-			uint32_t offset = 0;
+			size_t offset = 0;
 			m_Stride = 0;
 			for (auto& elem : m_BufferElements)
 			{
