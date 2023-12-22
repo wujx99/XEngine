@@ -21,5 +21,7 @@ private:
 	XEg::Ref<XEg::VertexArray> m_SquareVA;
 	XEg::Ref<XEg::Shader> m_FlatColorShader;
 
+	XEg::Ref<XEg::Texture2D> m_CheckerboardTexture;
+
 	glm::vec4 m_SquareColor = { .2f, .3f, .8f, 1.f };
 };
