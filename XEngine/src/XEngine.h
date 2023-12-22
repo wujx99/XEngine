@@ -17,6 +17,7 @@
 #include "XEngine/Core/TimeStep.h"
 // ---Renderer-----------------
 #include "XEngine/Renderer/Renderer.h"
+#include "XEngine/Renderer/Renderer2D.h"
 #include "XEngine/Renderer/RenderCommand.h"
 
 #include "XEngine/Renderer/Shader.h"

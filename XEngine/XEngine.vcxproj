@@ -175,6 +175,7 @@
     <ClInclude Include="src\XEngine\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\XEngine\Renderer\RenderCommand.h" />
     <ClInclude Include="src\XEngine\Renderer\Renderer.h" />
+    <ClInclude Include="src\XEngine\Renderer\Renderer2D.h" />
     <ClInclude Include="src\XEngine\Renderer\RendererAPI.h" />
     <ClInclude Include="src\XEngine\Renderer\Shader.h" />
     <ClInclude Include="src\XEngine\Renderer\Texture.h" />
@@ -618,6 +619,7 @@
     <ClCompile Include="src\XEngine\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\XEngine\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\XEngine\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\XEngine\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\XEngine\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\XEngine\Renderer\Shader.cpp" />
     <ClCompile Include="src\XEngine\Renderer\Texture.cpp" />
