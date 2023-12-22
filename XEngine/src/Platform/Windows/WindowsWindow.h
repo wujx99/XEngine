@@ -27,7 +27,7 @@ namespace XEg
 		virtual void ShutDown();
 	private:
 		GLFWwindow* m_Window; // the actual window
-		GraphicsContext* m_Context;
+		Scope<GraphicsContext> m_Context;
 
 		struct WindowData
 		{
