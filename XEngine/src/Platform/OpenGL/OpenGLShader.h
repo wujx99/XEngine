@@ -19,6 +19,7 @@ namespace XEg
 		virtual const std::string& GetName() const override { return m_Name;}
 		void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
 		void UploadUniformFloat3(const std::string& name, const glm::vec3& float3);
+		void UploadUniformFloat4(const std::string& name, const glm::vec4& float4);
 		void UploadUniformInt(const std::string& name, int value);
 	private:
 		std::string ReadFile(const std::string& filepath);

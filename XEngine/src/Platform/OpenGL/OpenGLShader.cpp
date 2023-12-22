@@ -67,6 +67,12 @@ namespace XEg
 		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
 		glUniform3f(location, float3.x, float3.y, float3.z);
 	}
+	void OpenGLShader::UploadUniformFloat4(const std::string& name, const glm::vec4& float4)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform4f(location, float4[0], float4[1], float4[2], float4[3]);
+	}
+
 	void OpenGLShader::UploadUniformInt(const std::string& name, int value)
 	{
 		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
@@ -99,14 +105,14 @@ namespace XEg
 		size_t pos = source.find(token, 0);
 		while (pos != std::string::npos)
 		{
-			size_t eol = source.find("\n", pos);
+			size_t eol = source.find("\r\n", pos);
 			XE_CORE_ASSERT(eol != std::string::npos, "Syntax error!");
 
 			size_t begin = pos + tokenLength + 1;
 			std::string type = source.substr(begin, eol - begin);
 			XE_CORE_ASSERT(ShaderTypeFromString(type), "Invalid shader type specified");
 
-			size_t nextLinePos = source.find_first_not_of("\n", eol); //Start of shader code after shader type declaration line
+			size_t nextLinePos = source.find_first_not_of("\r\n", eol); //Start of shader code after shader type declaration line
 			XE_CORE_ASSERT(nextLinePos != std::string::npos, "Syntax error");
 			pos = source.find(token, nextLinePos); //Start of next shader type declaration line
 

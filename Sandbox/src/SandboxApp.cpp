@@ -1,11 +1,13 @@
 #include <XEngine.h>
-
+#include <XEngine/Core/EntryPoint.h>
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
 #include "imgui/imgui.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
+#include "Sandbox2D.h"
 
 class ExampleLayer :public XEg::Layer
 {
@@ -14,7 +16,7 @@ public:
 		:Layer("Example"), m_CameraController(1280.f / 720.f)
 	{
 		// to draw triangle
-		m_VertexArray.reset(XEg::VertexArray::Create());
+		m_VertexArray = XEg::VertexArray::Create();
 
 		float vertices[3 * 7] =
 		{
@@ -43,7 +45,7 @@ public:
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 
-		m_SquareVA.reset(XEg::VertexArray::Create());
+		m_SquareVA = XEg::VertexArray::Create();
 
 		float squareVertices[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -210,7 +212,7 @@ class Sandbox : public XEg::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 	~Sandbox () = default;
 	
