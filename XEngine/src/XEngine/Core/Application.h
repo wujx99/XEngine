@@ -8,6 +8,8 @@
 
 #include "XEngine/ImGui/ImGuiLayer.h"
 
+int main(int argc, char** argv);
+
 namespace XEg {
 	class Application
 	{
@@ -15,7 +17,6 @@ namespace XEg {
 		Application();
 		virtual ~Application();
 
-		void Run();
 		void OnEvent(Event&);
 
 		void PushLayer(Layer* layer);
@@ -24,6 +25,8 @@ namespace XEg {
 		inline Window& GetWindow() { return *m_Window;}
 		inline static Application& Get() { return *s_Instance; }
 	private:
+		void Run();
+
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 	private:
@@ -36,7 +39,7 @@ namespace XEg {
 		float m_LastFrameTime{ 0.0f };
 	private:
 		static Application* s_Instance;
-
+		friend int ::main(int argc, char** argv);
 	};
 
 	// to be define by CLIENT!
