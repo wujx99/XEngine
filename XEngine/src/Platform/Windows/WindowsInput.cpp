@@ -6,7 +6,7 @@
 
 namespace XEg
 {
-	Scope<Input> Input::s_Instance = CreateScope<WindowsInput>();
+	
 
 	bool WindowsInput::IsKeyPressedImpl(KeyCode keycode)
 	{

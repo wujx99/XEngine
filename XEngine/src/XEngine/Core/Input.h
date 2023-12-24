@@ -19,6 +19,7 @@ namespace XEg
 		inline static float GetMouseX() { return s_Instance->GetMouseXImpl(); }
 		inline static float GetMouseY() { return s_Instance->GetMouseYImpl(); }
 
+		static Scope<Input> Create();
 	protected:
 		virtual bool IsKeyPressedImpl(KeyCode keycode) = 0;
 		virtual bool IsMouseButtonPressedImpl(MouseCode button) = 0;
