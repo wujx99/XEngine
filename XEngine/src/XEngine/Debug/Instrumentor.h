@@ -157,7 +157,7 @@ namespace XEg
 	
 }
 
-#define XE_PROFILE 1
+#define XE_PROFILE 0
 #if XE_PROFILE
 #define XE_PROFILE_BEGIN_SESSION(name, filepath) ::XEg::Instrumentor::Get().BeginSession(name, filepath)
 #define XE_PROFILE_END_SESSION() ::XEg::Instrumentor::Get().EndSession()
