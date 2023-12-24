@@ -161,7 +161,7 @@
     <ClInclude Include="src\XEngine\Core\Layer.h" />
     <ClInclude Include="src\XEngine\Core\LayerStack.h" />
     <ClInclude Include="src\XEngine\Core\Log.h" />
-    <ClInclude Include="src\XEngine\Core\MouseButtonCodes.h" />
+    <ClInclude Include="src\XEngine\Core\MouseCodes.h" />
     <ClInclude Include="src\XEngine\Core\TimeStep.h" />
     <ClInclude Include="src\XEngine\Core\Window.h" />
     <ClInclude Include="src\XEngine\Debug\Instrumentor.h" />

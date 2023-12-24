@@ -108,7 +108,7 @@
     <ClInclude Include="src\XEngine\Core\Log.h">
       <Filter>src\XEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Core\MouseButtonCodes.h">
+    <ClInclude Include="src\XEngine\Core\MouseCodes.h">
       <Filter>src\XEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\Core\TimeStep.h">

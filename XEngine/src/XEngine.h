@@ -14,7 +14,7 @@
 
 #include "XEngine/Core/Input.h"
 #include "XEngine/Core/KeyCodes.h"
-#include "XEngine/Core/MouseButtonCodes.h"
+#include "XEngine/Core/MouseCodes.h"
 #include "XEngine/Renderer/OrthographicCameraController.h"
 
 #include "XEngine/Core/TimeStep.h"

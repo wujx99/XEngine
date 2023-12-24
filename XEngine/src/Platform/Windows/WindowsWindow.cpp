@@ -3,6 +3,8 @@
 
 #include "XEngine/Renderer/Renderer.h"
 
+#include "XEngine/Core/Input.h"
+
 #include "XEngine/Event/ApplicationEvent.h"
 #include "XEngine/Event/KeyEvent.h"
 #include "XEngine/Event/MouseEvent.h"
@@ -125,20 +127,20 @@ namespace XEg
 				{
 				case GLFW_PRESS:
 				{
-					KeyPressedEvent event(key, 0);
+					KeyPressedEvent event(static_cast<KeyCode>(key), 0);
 
 					data.EventCallBack(event);
 					break;
 				}
 				case GLFW_RELEASE:
 				{
-					KeyReleasedEvent event(key);
+					KeyReleasedEvent event(static_cast<KeyCode>(key));
 					data.EventCallBack(event);
 					break;
 				}
 				case GLFW_REPEAT:
 				{
-					KeyPressedEvent event(key, 1);
+					KeyPressedEvent event(static_cast<KeyCode>(key), 1);
 					data.EventCallBack(event);
 					break;
 				}
@@ -150,7 +152,7 @@ namespace XEg
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-				KeyTypedEvent event(keycode);
+				KeyTypedEvent event(static_cast<KeyCode>(keycode));
 				data.EventCallBack(event);
 			});
 
@@ -162,13 +164,13 @@ namespace XEg
 				{
 				case GLFW_PRESS:
 				{
-					MouseButtonPressedEvent event(button);
+					MouseButtonPressedEvent event(static_cast<MouseCode>(button));
 					data.EventCallBack(event);
 					break;
 				}
 				case GLFW_RELEASE:
 				{
-					MouseButtonPressedEvent event(button);
+					MouseButtonPressedEvent event(static_cast<MouseCode>(button));
 					data.EventCallBack(event);
 					break;
 				}

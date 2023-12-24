@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Event.h"
-
+#include "XEngine/Core/Input.h"
 
 
 namespace XEg
@@ -9,18 +9,18 @@ namespace XEg
 	class KeyEvent :public Event
 	{
 	public:
-		inline int GetKeyCode()const { return m_KeyCode; }
+		inline KeyCode GetKeyCode()const { return m_KeyCode; }
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard| EventCategoryInput) // nice
 	protected:
-		KeyEvent(int keyCode)  // only construct by drived class
+		KeyEvent(KeyCode keyCode)  // only construct by drived class
 			:m_KeyCode(keyCode){}
-		int m_KeyCode;
+		KeyCode m_KeyCode;
 	};
 
 	class KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(int keyCode, int repeatCount)
+		KeyPressedEvent(KeyCode keyCode, int repeatCount)
 			:KeyEvent(keyCode), m_RepeatCount(repeatCount)
 		{
 
@@ -42,7 +42,7 @@ namespace XEg
 	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent(int keyCode)
+		KeyReleasedEvent(KeyCode keyCode)
 			:KeyEvent(keyCode)
 		{
 
@@ -62,7 +62,7 @@ namespace XEg
 	class KeyTypedEvent : public KeyEvent
 	{
 	public:
-		KeyTypedEvent(int keyCode)
+		KeyTypedEvent(KeyCode keyCode)
 			:KeyEvent(keyCode)
 		{
 
