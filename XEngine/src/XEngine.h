@@ -10,6 +10,8 @@
 #include "XEngine/Core/Application.h"
 #include "XEngine/Core/Log.h"
 
+#include "XEngine/Debug/Instrumentor.h"
+
 #include "XEngine/Core/Input.h"
 #include "XEngine/Core/KeyCodes.h"
 #include "XEngine/Core/MouseButtonCodes.h"

@@ -164,6 +164,7 @@
     <ClInclude Include="src\XEngine\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\XEngine\Core\TimeStep.h" />
     <ClInclude Include="src\XEngine\Core\Window.h" />
+    <ClInclude Include="src\XEngine\Debug\Instrumentor.h" />
     <ClInclude Include="src\XEngine\Event\ApplicationEvent.h" />
     <ClInclude Include="src\XEngine\Event\Event.h" />
     <ClInclude Include="src\XEngine\Event\KeyEvent.h" />
