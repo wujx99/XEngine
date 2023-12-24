@@ -84,10 +84,11 @@ namespace XEg
 		dispatcher.Dispatch<WindowCloseEvent>(XE_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(XE_BIND_EVENT_FN(Application::OnWindowResize));
 
-		for (auto itr = m_LayerStack.end(); itr != m_LayerStack.begin();)
+		for (auto itr = m_LayerStack.rbegin(); itr != m_LayerStack.rend(); ++itr)
 		{
-			(*--itr)->OnEvent(e);
-			if (e.Handled) break;  // be careful to this! blocked!
+			(*itr)->OnEvent(e);
+			if (e.Handled) 
+				break;  // be careful to this! blocked!
 		}
 
 	}

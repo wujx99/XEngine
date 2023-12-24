@@ -19,6 +19,9 @@
     <Filter Include="src\XEngine\Core">
       <UniqueIdentifier>{82C99CB5-6EC2-BB07-97F4-A08C834C9B13}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\XEngine\Debug">
+      <UniqueIdentifier>{E0544269-4C6B-40FF-95E2-CB2001381187}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\XEngine\Event">
       <UniqueIdentifier>{BBCB5D69-27E2-5BFF-7059-E720DCAE2C87}</UniqueIdentifier>
     </Filter>
@@ -113,6 +116,9 @@
     </ClInclude>
     <ClInclude Include="src\XEngine\Core\Window.h">
       <Filter>src\XEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Debug\Instrumentor.h">
+      <Filter>src\XEngine\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\Event\ApplicationEvent.h">
       <Filter>src\XEngine\Event</Filter>
@@ -1416,7 +1422,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
