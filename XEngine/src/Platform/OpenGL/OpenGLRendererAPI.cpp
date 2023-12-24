@@ -5,9 +5,33 @@
 #include <glad/glad.h>
 namespace XEg
 {
+	void OpenGLMessageCallback(
+		unsigned source,
+		unsigned type,
+		unsigned id,
+		unsigned severity,
+		int length,
+		const char* message,
+		const void* userParam)
+	{
+		switch (severity)
+		{
+		case GL_DEBUG_SEVERITY_HIGH:			XE_CLIENT_CRITICAL(message); return;
+		case GL_DEBUG_SEVERITY_MEDIUM:			XE_CLIENT_CRITICAL(message); return;
+		case GL_DEBUG_SEVERITY_LOW:				XE_CLIENT_CRITICAL(message); return;
+		case GL_DEBUG_SEVERITY_NOTIFICATION:	XE_CLIENT_CRITICAL(message); return;
+		}
+		XE_CORE_ASSERT(false, "Unkonw severity level!");
+	}
 	void OpenGLRendererAPI::Init()
 	{
 		XE_PROFILE_FUNCTION();
+	#ifdef XE_DEBUG
+			glEnable(GL_DEBUG_OUTPUT);
+			glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+			glDebugMessageCallback(OpenGLMessageCallback, nullptr);
+			glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DEBUG_SEVERITY_NOTIFICATION, 0, NULL, GL_FALSE);
+	#endif // XE_DEBUG
 
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

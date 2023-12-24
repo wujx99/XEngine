@@ -1,6 +1,8 @@
 #include "xepch.h"
 #include "WindowsWindow.h"
 
+#include "XEngine/Renderer/Renderer.h"
+
 #include "XEngine/Event/ApplicationEvent.h"
 #include "XEngine/Event/KeyEvent.h"
 #include "XEngine/Event/MouseEvent.h"
@@ -82,6 +84,11 @@ namespace XEg
 		}
 		{
 			XE_PROFILE_SCOPE("glfwCreateWindow");
+
+		#if defined(XE_DEBUG)
+					if (Renderer::GetAPI() == RendererAPI::API::OpenGL)
+						glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+		#endif
 			m_Window = glfwCreateWindow((int)m_Data.Width, (int)m_Data.Height, m_Data.Title.c_str(), nullptr, nullptr);
 
 		}
