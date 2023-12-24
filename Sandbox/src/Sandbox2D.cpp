@@ -17,21 +17,24 @@ Sandbox2D::Sandbox2D()
 }
 void Sandbox2D::OnAttach()
 {
+	XE_PROFILE_FUNCTION();
+
 	m_CheckerboardTexture = XEg::Texture2D::Create("assets/textures/Checkerboard.png");
 }
 
 void Sandbox2D::OnDetach()
 {
+	XE_PROFILE_FUNCTION();
+
 }
 
 void Sandbox2D::OnUpdate(XEg::TimeStep ts)
 {
-	XE_PROFILE_FUNCTION("Sandbox2D::OnUpdate");
+	XE_PROFILE_FUNCTION();
 	// Update
-	{
-		XE_PROFILE_SCOPE("CameraController::OnUpdate");
-		m_CameraController.OnUpdate(ts);
-	}
+	
+	m_CameraController.OnUpdate(ts);
+	
 	// Render
 	{
 		XE_PROFILE_SCOPE("Render Prep");

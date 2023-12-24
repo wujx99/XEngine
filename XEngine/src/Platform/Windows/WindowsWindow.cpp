@@ -25,16 +25,22 @@ namespace XEg
 
 	WindowsWindow::WindowsWindow(const WindowProps& prop)
 	{
+		XE_PROFILE_FUNCTION();
+
 		Init(prop);
 	}
 
 	WindowsWindow::~WindowsWindow()
 	{
+		XE_PROFILE_FUNCTION();
+
 		ShutDown();
 	}
 
 	void WindowsWindow::OnUpdate()
 	{
+		XE_PROFILE_FUNCTION();
+
 		glfwPollEvents();
 		m_Context->SwapBuffers();
 	}
@@ -56,6 +62,8 @@ namespace XEg
 
 	void WindowsWindow::Init(const WindowProps& props)
 	{
+		XE_PROFILE_FUNCTION();
+
 		m_Data.Title = props.Title;
 		m_Data.Height = props.Height;
 		m_Data.Width = props.Width;
@@ -64,6 +72,7 @@ namespace XEg
 
 		if (!s_GLFWInitialized)
 		{
+			XE_PROFILE_SCOPE("glfwInit");
 			int success = glfwInit();
 			XE_CORE_ASSERT(success, "Could not initialize GLFW!");
 
@@ -71,8 +80,11 @@ namespace XEg
 
 			s_GLFWInitialized = true;
 		}
+		{
+			XE_PROFILE_SCOPE("glfwCreateWindow");
+			m_Window = glfwCreateWindow((int)m_Data.Width, (int)m_Data.Height, m_Data.Title.c_str(), nullptr, nullptr);
 
-		m_Window = glfwCreateWindow((int)m_Data.Width, (int)m_Data.Height, m_Data.Title.c_str(), nullptr, nullptr);
+		}
 
 		m_Context =OpenGLContext::Create(m_Window);
 		m_Context->Init();
@@ -176,6 +188,8 @@ namespace XEg
 
 	void WindowsWindow::ShutDown()
 	{
+		XE_PROFILE_FUNCTION();
+
 		glfwDestroyWindow(m_Window);
 	}
 

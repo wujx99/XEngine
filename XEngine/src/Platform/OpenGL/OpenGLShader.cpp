@@ -19,6 +19,8 @@ namespace XEg
 	}
 	OpenGLShader::OpenGLShader(const std::string& path)
 	{
+		XE_PROFILE_FUNCTION();
+
 		std::string source = ReadFile(path);
 		auto shaderSource = PreProcess(source);
 		Compile(shaderSource);
@@ -33,6 +35,8 @@ namespace XEg
 	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc)
 		:m_Name(name)
 	{
+		XE_PROFILE_FUNCTION();
+
 		std::unordered_map<GLenum, std::string> shaderSource;
 		shaderSource[GL_VERTEX_SHADER] = vertexSrc;
 		shaderSource[GL_FRAGMENT_SHADER] = fragmentSrc;
@@ -41,6 +45,8 @@ namespace XEg
 
 	OpenGLShader::~OpenGLShader()
 	{
+		XE_PROFILE_FUNCTION();
+
 		glDeleteProgram(m_RendererID);
 
 	}
@@ -59,21 +65,29 @@ namespace XEg
 
 	void OpenGLShader::SetInt(const std::string& name, int value)
 	{
+		XE_PROFILE_FUNCTION();
+
 		UploadUniformInt(name, value);
 	}
 
 	void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& value)
 	{
+		XE_PROFILE_FUNCTION();
+
 		UploadUniformFloat3(name, value);
 	}
 
 	void OpenGLShader::SetFloat4(const std::string& name, const glm::vec4& value)
 	{
+		XE_PROFILE_FUNCTION();
+
 		UploadUniformFloat4(name, value);
 	}
 
 	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& value)
 	{
+		XE_PROFILE_FUNCTION();
+
 		UploadUniformMat4(name, value);
 	}
 
@@ -101,6 +115,8 @@ namespace XEg
 
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
+		XE_PROFILE_FUNCTION();
+
 		std::string result;
 		std::ifstream in(filepath, std::ios::in|std::ios::binary);
 		if (in)
@@ -128,6 +144,8 @@ namespace XEg
 	}
 	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& source)
 	{
+		XE_PROFILE_FUNCTION();
+
 		std::unordered_map<GLenum, std::string> shaderSource;
 		const char* token = "#type";
 		size_t tokenLength = strlen(token);
@@ -154,6 +172,8 @@ namespace XEg
 	}
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string>& shaderSource)
 	{
+		XE_PROFILE_FUNCTION();
+
 		GLuint program = glCreateProgram();
 
 		XE_CORE_ASSERT(shaderSource.size() <= 2, "We only support 2 shaders for now");

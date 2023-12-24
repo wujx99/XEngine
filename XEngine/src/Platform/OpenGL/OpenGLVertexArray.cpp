@@ -27,11 +27,15 @@ namespace XEg
 	}
 	OpenGLVertexArray::OpenGLVertexArray()
 	{
+		XE_PROFILE_FUNCTION();
+
 		glGenVertexArrays(1, &m_RendererID);
 		
 	}
 	void OpenGLVertexArray::Bind() const
 	{
+		XE_PROFILE_FUNCTION();
+
 		glBindVertexArray(m_RendererID);
 	}
 	void OpenGLVertexArray::UnBind() const
@@ -40,6 +44,8 @@ namespace XEg
 	}
 	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
 	{
+		XE_PROFILE_FUNCTION();
+
 		XE_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
 		glBindVertexArray(m_RendererID);
 		vertexBuffer->Bind();
@@ -62,6 +68,8 @@ namespace XEg
 	}
 	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer)
 	{
+		XE_PROFILE_FUNCTION();
+
 		glBindVertexArray(m_RendererID);
 		indexBuffer->Bind();
 		m_IndexBuffer = indexBuffer;

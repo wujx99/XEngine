@@ -13,13 +13,11 @@ namespace XEg
 	}
 	void LayerStack::PushLayer(Layer* layer)
 	{
-		layer->OnAttach();
 		m_Layers.emplace(m_Layers.begin()+m_LayerIndex, layer);
 		m_LayerIndex++;
 	}
 	void LayerStack::PushOverLayer(Layer* overlay)
 	{
-		overlay->OnAttach();
 		m_Layers.emplace_back(overlay);
 	}
 	void LayerStack::PopLayer(Layer* layer)

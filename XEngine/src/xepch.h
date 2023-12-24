@@ -15,6 +15,8 @@
 
 #include "XEngine/Core/Log.h"
 
+#include "XEngine/Debug/Instrumentor.h"
+
 #ifdef XE_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

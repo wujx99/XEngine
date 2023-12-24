@@ -14,6 +14,8 @@ namespace XEg
 	}
 	void OpenGLContext::Init()
 	{
+		XE_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		XE_CORE_ASSERT(status, "Failed to initial glad");
@@ -35,6 +37,8 @@ namespace XEg
 	}
 	void OpenGLContext::SwapBuffers()
 	{
+		XE_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_WindowHandle);
 	}
 }
