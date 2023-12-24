@@ -24,4 +24,12 @@ private:
 	XEg::Ref<XEg::Texture2D> m_CheckerboardTexture;
 
 	glm::vec4 m_SquareColor = { .2f, .3f, .8f, 1.f };
+
+	struct ProfileResult
+	{
+		const char* Name;
+		float Time;
+	};
+
+	std::vector<ProfileResult> m_ProfileResults;
 };
