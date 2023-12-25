@@ -87,7 +87,7 @@
     <ClInclude Include="src\XEngine\Core\Application.h">
       <Filter>src\XEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\XEngine\Core\Core.h">
+    <ClInclude Include="src\XEngine\Core\Base.h">
       <Filter>src\XEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\XEngine\Core\EntryPoint.h">

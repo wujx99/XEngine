@@ -186,7 +186,7 @@ namespace XEg
 	}
 }
 
-#define XE_PROFILE 1
+#define XE_PROFILE 0
 #if XE_PROFILE
 	#define CONCAT(x, y) x ## y
 	#define C(x, y) CONCAT(x, y)

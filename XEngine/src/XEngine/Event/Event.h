@@ -1,6 +1,6 @@
 #pragma once
 #include "xepch.h"
-#include "XEngine/Core/Core.h"
+#include "XEngine/Core/Base.h"
 
 
 namespace XEg

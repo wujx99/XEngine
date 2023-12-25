@@ -1,5 +1,5 @@
 #pragma once
-#include "XEngine/Core/Core.h"
+#include "XEngine/Core/Base.h"
 #include "XEngine/Core/Window.h"
 #include "XEngine/Core/LayerStack.h"
 
@@ -22,8 +22,9 @@ namespace XEg {
 		void PushLayer(Layer* layer);
 		void PushOverLay(Layer* overlay);
 
-		inline Window& GetWindow() { return *m_Window;}
-		inline static Application& Get() { return *s_Instance; }
+		Window& GetWindow() { return *m_Window;}
+		void Close();
+		static Application& Get() { return *s_Instance; }
 	private:
 		void Run();
 

@@ -2,7 +2,7 @@
 
 #include "xepch.h"
 
-#include "XEngine/Core/Core.h"
+#include "XEngine/Core/Base.h"
 #include "XEngine/Event/Event.h"
 
 namespace XEg

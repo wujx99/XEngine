@@ -3,7 +3,7 @@
 // For use by XEngine application
 
 #include <stdio.h>
-#include "XEngine/Core/Core.h"
+#include "XEngine/Core/Base.h"
 #include "XEngine/Core/Layer.h"
 #include "XEngine/ImGui/ImGuiLayer.h"
 
