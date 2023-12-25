@@ -91,15 +91,16 @@ project "XEngine"
 		defines "XE_DEBUG"
 		runtime "Debug"
 		symbols "on"
+		optimize "Off"
 		
 	filter "configurations:Release"
 		defines "XE_RELEASE"
 		runtime "Release"
-		optimize "on"
+		optimize "On"
 	filter "configurations:Debug"
 		defines "XE_DIST"
 		runtime "Release"
-		optimize "on"
+		optimize "On"
 
 
 project "Sandbox"
