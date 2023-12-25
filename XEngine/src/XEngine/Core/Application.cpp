@@ -86,9 +86,10 @@ namespace XEg
 
 		for (auto itr = m_LayerStack.rbegin(); itr != m_LayerStack.rend(); ++itr)
 		{
-			(*itr)->OnEvent(e);
 			if (e.Handled) 
 				break;  // be careful to this! blocked!
+			(*itr)->OnEvent(e);
+
 		}
 
 	}
