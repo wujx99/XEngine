@@ -11,7 +11,7 @@ namespace XEg
 		virtual void Bind() override;
 		virtual void Unbind() override;
 
-		virtual uint32_t GetColorAttachmentRendererID() const override { return m_RendererID; };
+		virtual uint32_t GetColorAttachmentRendererID() const override { return m_ColorAttachment; };
 		virtual const FramebufferSpecification& GetSpecificaiton() const override { return m_Specification; };
 	private:
 		uint32_t m_RendererID;
