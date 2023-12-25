@@ -105,7 +105,7 @@ namespace XEg
 	void Renderer2D::Shutdown()
 	{
 		XE_PROFILE_FUNCTION();
-
+		delete[] s_Data.QuadVertexBufferBase;
 		
 	}
 	void Renderer2D::BeginScene(OrthographicCamera& camera)
@@ -187,7 +187,6 @@ namespace XEg
 		XE_PROFILE_FUNCTION();
 
 		constexpr size_t quadVertexCount = 4;
-		const glm::vec4 color = { 1.0f, 1.0f, 1.0f, 1.0f };
 		const glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
 
 		if (s_Data.QuadIndexCount >= Renderer2DData::MaxIndices)
@@ -220,7 +219,7 @@ namespace XEg
 		for (size_t i = 0; i < quadVertexCount; i++)
 		{
 			s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[i];
-			s_Data.QuadVertexBufferPtr->Color = color;
+			s_Data.QuadVertexBufferPtr->Color = tintColor;
 			s_Data.QuadVertexBufferPtr->TexCoord = textureCoords[i];
 			s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
 			s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
@@ -278,7 +277,6 @@ namespace XEg
 		XE_PROFILE_FUNCTION();
 
 		constexpr size_t quadVertexCount = 4;
-		const glm::vec4 color = { 1.0f, 1.0f, 1.0f, 1.0f };
 		const glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
 
 		if (s_Data.QuadIndexCount >= Renderer2DData::MaxIndices)
@@ -312,7 +310,7 @@ namespace XEg
 		for (size_t i = 0; i < quadVertexCount; i++)
 		{
 			s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[i];
-			s_Data.QuadVertexBufferPtr->Color = color;
+			s_Data.QuadVertexBufferPtr->Color = tintColor;
 			s_Data.QuadVertexBufferPtr->TexCoord = textureCoords[i];
 			s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
 			s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;

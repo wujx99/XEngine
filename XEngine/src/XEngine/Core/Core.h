@@ -43,16 +43,29 @@
 	#error "Unknown platform!"
 #endif // !_WIN32
 
-
-
-
 #ifdef XE_DEBUG
-	#define XE_CORE_ASSERT(x, ...) {if(!(x)) { XE_CORE_ERROR("Assert failed: {0}", __VA_ARGS__); __debugbreak();}}
-	#define XE_ASSERT(x, ...) {if(!(x)) { XE_CLIENT_ERROR("Assert failed: {0}", __VA_ARGS__); __debugbreak();}}
+	#if defined(XE_PLATFORM_WINDOWS)
+		#define XE_DEBUGBREAK() __debugbreak()
+	#elif defined(XE_PLATFORM_LINUX)
+		#include <signal.h>
+		#define XE_DEBUGBREAK() raise(SIGTRAP)
+	#else
+		#error "Platform doesn't support debugbreak yet!"
+	#endif
+		#define XE_ENABLE_ASSERTS
+	#else
+		#define XE_DEBUGBREAK()
+#endif // XE_DEBUG
+
+
+
+#ifdef XE_ENABLE_ASSERTS
+	#define XE_CORE_ASSERT(x, ...) {if(!(x)) { XE_CORE_ERROR("Assert failed: {0}", __VA_ARGS__); XE_DEBUGBREAK();}}
+	#define XE_ASSERT(x, ...) {if(!(x)) { XE_CLIENT_ERROR("Assert failed: {0}", __VA_ARGS__); XE_DEBUGBREAK();}}
 #else
 	#define XE_CORE_ASSERT(x, ...)
 	#define XE_CLIENT_ASSERT(x, ...)
-#endif // DEBUG
+#endif 
 
 
 #define BIT(x) (1<<x)
