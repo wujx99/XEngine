@@ -151,3 +151,52 @@ project "Sandbox"
 		defines "XE_DIST"
 		runtime "Release"
 		optimize "on"
+
+project "XEditor"
+	location "XEditor"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp",
+	}
+
+	includedirs
+	{
+		"XEngine/vendor/spdlog/include",
+		"XEngine/src",
+		"XEngine/vendor",
+		"%{IncludeDir.glm}"
+	}
+
+	links
+	{
+		"XEngine"
+	}
+
+	filter "system:windows"
+		
+		systemversion "latest"
+
+		
+		
+	filter "configurations:Debug"
+		defines "XE_DEBUG"
+		runtime "Debug"
+		symbols "on"
+		
+	filter "configurations:Release"
+		defines "XE_RELEASE"
+		runtime "Release"
+		optimize "on"
+	filter "configurations:Debug"
+		defines "XE_DIST"
+		runtime "Release"
+		optimize "on"

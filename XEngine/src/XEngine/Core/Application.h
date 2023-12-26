@@ -14,7 +14,7 @@ namespace XEg {
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "XEngine APP");
 		virtual ~Application();
 
 		void OnEvent(Event&);
