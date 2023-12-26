@@ -31,6 +31,9 @@
     <Filter Include="src\XEngine\Renderer">
       <UniqueIdentifier>{D06DF12E-BCFC-7AF8-651B-8FF351898B9E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\XEngine\Scene">
+      <UniqueIdentifier>{87B7506A-F3CD-4E00-3C45-DA21A89A1F88}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
@@ -170,6 +173,12 @@
     </ClInclude>
     <ClInclude Include="src\XEngine\Renderer\VertexArray.h">
       <Filter>src\XEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Scene\Components.h">
+      <Filter>src\XEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XEngine\Scene\Scene.h">
+      <Filter>src\XEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\xepch.h">
       <Filter>src</Filter>
@@ -1510,6 +1519,9 @@
     </ClCompile>
     <ClCompile Include="src\XEngine\Renderer\VertexArray.cpp">
       <Filter>src\XEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XEngine\Scene\Scene.cpp">
+      <Filter>src\XEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\xepch.cpp">
       <Filter>src</Filter>

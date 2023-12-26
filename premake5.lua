@@ -22,6 +22,8 @@ IncludeDir["Glad"] = "XEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "XEngine/vendor/imgui"
 IncludeDir["glm"] = "XEngine/vendor/glm"
 IncludeDir["stb_image"] = "XEngine/vendor/stb_image"
+IncludeDir["entt"] = "XEngine/vendor/entt/include"
+
 group "Dependencies"
 	include "XEngine/vendor/GLFW"
 	include "XEngine/vendor/Glad"
@@ -65,7 +67,8 @@ project "XEngine"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 	}
 	links
 	{
@@ -173,7 +176,8 @@ project "XEditor"
 		"XEngine/vendor/spdlog/include",
 		"XEngine/src",
 		"XEngine/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links

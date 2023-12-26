@@ -7,6 +7,9 @@
 #include "XEngine/Core/Layer.h"
 #include "XEngine/ImGui/ImGuiLayer.h"
 
+#include "XEngine/Scene/Scene.h"
+#include "XEngine/Scene/Components.h"
+
 #include "XEngine/Core/Application.h"
 #include "XEngine/Core/Log.h"
 
