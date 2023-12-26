@@ -14,6 +14,7 @@ namespace XEg
 		
 		void OnUpdate(TimeStep ts);
 		void OnEvent(Event& e);
+		void OnResize(uint32_t width, uint32_t height);
 
 		// can modify
 		OrthographicCamera& GetCamera() { return m_Camera; }
