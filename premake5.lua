@@ -178,7 +178,9 @@ project "Sandbox"
 		"XEngine/vendor/spdlog/include",
 		"XEngine/src",
 		"XEngine/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
+
 	}
 
 	links
