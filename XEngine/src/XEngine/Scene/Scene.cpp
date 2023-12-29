@@ -5,6 +5,7 @@
 #include "XEngine/Renderer/Renderer2D.h"
 
 #include <glm/glm.hpp>
+#include "XEngine/Scene/Entity.h"
 
 namespace XEg
 {
@@ -45,9 +46,13 @@ namespace XEg
 	Scene::~Scene()
 	{
 	}
-	entt::entity Scene::CreateEntity()
+	Entity Scene::CreateEntity(const std::string& name)
 	{
-		return m_Registry.create();
+		Entity entity = { m_Registry.create(), this }; // use this to bind Scene
+		entity.AddComponent<TransformComponent>();
+		auto& tag = entity.AddComponent<TagComponnent>();
+		tag.Tag = name.empty() ? "Entity" : name;
+		return entity;
 	}
 	void Scene::OnUpdate(TimeStep ts)
 	{

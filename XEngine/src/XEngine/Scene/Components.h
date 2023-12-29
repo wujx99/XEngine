@@ -4,6 +4,18 @@
 
 namespace XEg
 {
+	struct TagComponnent
+	{
+		std::string Tag;
+
+		TagComponnent() = default;
+		TagComponnent(const TagComponnent&) = default;
+		TagComponnent(const std::string& tag)
+			:Tag(tag)
+		{
+
+		}
+	};
 	struct TransformComponent
 	{
 		glm::mat4 Transform{ 1.f };
