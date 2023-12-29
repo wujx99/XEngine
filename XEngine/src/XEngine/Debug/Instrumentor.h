@@ -24,17 +24,12 @@ namespace XEg
 
 	class Instrumentor
 	{
-	private:
-		std::mutex m_Mutex;
-		InstrumentationSession* m_CurrentSession;
-		std::ofstream m_OutputStream;
-
+	
 	public:
-		Instrumentor()
-			:m_CurrentSession(nullptr)
-		{
+		
+		Instrumentor(const Instrumentor&) = delete;
+		Instrumentor(Instrumentor&&) = delete;
 
-		}
 		void BeginSession(const std::string& name, const std::string& filepath = "results.json")
 		{
 			std::lock_guard lock(m_Mutex);
@@ -63,6 +58,8 @@ namespace XEg
 					XE_CORE_ERROR("Instrumentor could not open results file '{0}'.", filepath);
 				}
 			}
+
+
 		}
 
 		void EndSession()
@@ -92,6 +89,21 @@ namespace XEg
 				m_OutputStream.flush();
 			}
 		}
+		static Instrumentor& Get()
+		{
+			static Instrumentor instance;
+			return instance;
+		}
+	private:
+		Instrumentor()
+			:m_CurrentSession(nullptr)
+		{
+
+		}
+		~Instrumentor()
+		{
+			EndSession();
+		}
 
 		void WriteHeader()
 		{
@@ -105,11 +117,7 @@ namespace XEg
 			m_OutputStream.flush();
 		}
 
-		static Instrumentor& Get()
-		{
-			static Instrumentor instance;
-			return instance;
-		}
+		
 		// Note: you must already own lock on m_Mutex before
 		// calling InternalEndSession()
 		void InternalEndSession() 
@@ -122,6 +130,11 @@ namespace XEg
 				m_CurrentSession = nullptr;
 			}
 		}
+	private:
+		std::mutex m_Mutex;
+		InstrumentationSession* m_CurrentSession;
+		std::ofstream m_OutputStream;
+
 	};
 
 
