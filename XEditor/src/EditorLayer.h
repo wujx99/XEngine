@@ -26,6 +26,10 @@ namespace XEg
 
 		Ref<Scene> m_ActiveScene;
 		Entity m_SquareEntity;
+		Entity m_FirstCamera;
+		Entity m_SecondCamera;
+
+		bool m_PrimaryCamera = true;
 
 		Ref<Texture2D> m_CheckerboardTexture;
 

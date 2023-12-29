@@ -30,6 +30,13 @@ namespace XEg
 		square.AddComponent<SpriteRendererComponent>(glm::vec4{ 0.f, 1.f, 0.f, 1.f });
 
 		m_SquareEntity = square;
+
+		m_FirstCamera = m_ActiveScene->CreateEntity("Camera Entity");
+		m_FirstCamera.AddComponent<CameraComponent>(glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
+
+		m_SecondCamera = m_ActiveScene->CreateEntity("Clip-Space Entity");
+		auto& cc = m_SecondCamera.AddComponent<CameraComponent>(glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f));
+		cc.Primary = false;
 	}
 
 	void EditorLayer::OnDetach()
@@ -65,12 +72,12 @@ namespace XEg
 		}
 		
 
-		Renderer2D::BeginScene(m_CameraController.GetCamera());
+		
 		//update scene
 
 		m_ActiveScene->OnUpdate(ts);
 			
-		Renderer2D::EndScene();
+	
 		m_Framebuffer->Unbind();
 		
 	}
@@ -146,6 +153,12 @@ namespace XEg
 			ImGui::Separator();
 		}
 		
+		ImGui::DragFloat3("Camera Transform", glm::value_ptr(m_FirstCamera.GetComponent<TransformComponent>().Transform[3]));
+		if (ImGui::Checkbox("FirstCamera", &m_PrimaryCamera))
+		{
+			m_FirstCamera.GetComponent<CameraComponent>().Primary = m_PrimaryCamera;
+			m_SecondCamera.GetComponent<CameraComponent>().Primary = !m_PrimaryCamera;
+		}
 
 		ImGui::End();
 

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "XEngine/Renderer/Camera.h"
 #include <glm/glm.hpp>
 
 namespace XEg
@@ -15,6 +16,19 @@ namespace XEg
 		{
 
 		}
+	};
+	struct CameraComponent
+	{
+		Camera Camera;
+		bool Primary = true;
+
+		CameraComponent() = default;
+		CameraComponent(const CameraComponent&) = default;
+		CameraComponent(const glm::mat4& projection)
+			:Camera(projection)
+		{
+		}
+
 	};
 	struct TransformComponent
 	{
