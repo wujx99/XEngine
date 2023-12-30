@@ -37,6 +37,37 @@ namespace XEg
 		m_SecondCamera = m_ActiveScene->CreateEntity("Clip-Space Entity");
 		auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
 		cc.Primary = false;
+
+		class CameraController : public ScriptaleEntity
+		{
+		public:
+			void OnCreate()
+			{
+
+			}
+			void OnDestroy()
+			{
+
+			}
+			void OnUpdate(TimeStep ts)
+			{
+				auto& transform = GetComponent<TransformComponent>().Transform;
+				float speed = 5.f;
+
+				if (Input::IsKeyPressed(KeyCode::A))
+					transform[3][0] -= speed * ts;
+				if (Input::IsKeyPressed(KeyCode::D))
+					transform[3][0] += speed * ts;
+				if (Input::IsKeyPressed(KeyCode::W))
+					transform[3][1] += speed * ts;
+				if (Input::IsKeyPressed(KeyCode::S))
+					transform[3][1] -= speed * ts;
+			}
+
+		};
+		m_FirstCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
+
+		
 	}
 
 	void EditorLayer::OnDetach()

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "SceneCamera.h"
+#include "XEngine/Scene/ScriptableEntity.h"
+
 #include <glm/glm.hpp>
 
 namespace XEg
@@ -27,6 +29,28 @@ namespace XEg
 		CameraComponent(const CameraComponent&) = default;
 		
 
+	};
+
+	struct NativeScriptComponent
+	{
+		ScriptaleEntity* Instance = nullptr;
+
+		std::function<void()> InstantiateFunction;
+		std::function<void()> DestryInstanceFunction;
+
+		std::function<void(ScriptaleEntity*)> OnCreateFunction;
+		std::function<void(ScriptaleEntity*)> OnDestoryFunction;
+		std::function<void(ScriptaleEntity*, TimeStep)> OnUpdateFunction;
+
+		template<typename T>
+		void Bind()
+		{
+			InstantiateFunction = [&]() {Instance = new T(); };
+			DestryInstanceFunction = [&]() {delete (T*)Instance; Instance = nullptr; };
+			OnCreateFunction = [](ScriptaleEntity* instance) {((T*)instance)->OnCreate(); };
+			OnDestoryFunction = [](ScriptaleEntity* instance) {((T*)instance)->OnDestroy(); };
+			OnUpdateFunction = [](ScriptaleEntity* instance, TimeStep ts) {((T*)instance)->OnUpdate(ts); };
+		}
 	};
 	struct TransformComponent
 	{
