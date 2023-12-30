@@ -1,6 +1,7 @@
 #pragma once
 
 #include "XEngine.h"
+#include "Panels/SceneHierarchyPanel.h"
 
 namespace XEg
 {
@@ -38,6 +39,7 @@ namespace XEg
 
 		glm::vec4 m_SquareColor = { .2f, .3f, .8f, 1.f };
 
-
+		// Panels
+		SceneHierarchyPanel m_SceneHierarchyPanel;
 	};
 }
