@@ -7,6 +7,10 @@
 
 #include <thread>
 #include <iomanip>
+#include <mutex>
+#include <sstream>
+
+#include "XEngine/Core/Log.h"
 
 namespace XEg
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "xepch.h"
+#include <sstream>
 
 #include "XEngine/Core/Base.h"
 #include "XEngine/Event/Event.h"

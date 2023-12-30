@@ -1,7 +1,7 @@
 #pragma once
 
 #include "XEngine/Event/Event.h"
-#include "XEngine/Core/Input.h"
+#include "XEngine/Core/MouseCodes.h"
 
 
 namespace XEg
@@ -9,7 +9,7 @@ namespace XEg
 	class MouseMovedEvent :public Event
 	{
 	public:
-		MouseMovedEvent(float x, float y)
+		MouseMovedEvent(const float x, const float y)
 		:m_MouseX(x),m_MouseY(y)
 		{}
 
@@ -32,7 +32,7 @@ namespace XEg
 	class MouseScrolledEvent :public Event
 	{
 	public:
-		MouseScrolledEvent(float xOffset, float yOffset)
+		MouseScrolledEvent(const float xOffset,const  float yOffset)
 			:m_XOffset(xOffset), m_YOffset(yOffset)
 		{}
 
@@ -62,7 +62,7 @@ namespace XEg
 	
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	protected:
-		MouseButtonEvent(MouseCode button)
+		MouseButtonEvent(const MouseCode button)
 			:m_Button(button)
 		{}
 		MouseCode m_Button;
@@ -71,7 +71,7 @@ namespace XEg
 	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonPressedEvent(MouseCode button)
+		MouseButtonPressedEvent(const MouseCode button)
 			:MouseButtonEvent(button) {}
 		virtual std::string ToString() const override
 		{
@@ -86,7 +86,7 @@ namespace XEg
 	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonReleasedEvent(MouseCode button)
+		MouseButtonReleasedEvent(const MouseCode button)
 			:MouseButtonEvent(button) {}
 		virtual std::string ToString() const override
 		{

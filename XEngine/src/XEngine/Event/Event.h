@@ -1,5 +1,6 @@
 #pragma once
-#include "xepch.h"
+#include <functional>
+#include "XEngine/Debug/Instrumentor.h"
 #include "XEngine/Core/Base.h"
 
 

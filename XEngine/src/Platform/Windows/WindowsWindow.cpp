@@ -122,20 +122,20 @@ namespace XEg
 				{
 				case GLFW_PRESS:
 				{
-					KeyPressedEvent event(static_cast<KeyCode>(key), 0);
+					KeyPressedEvent event(key, 0);
 
 					data.EventCallBack(event);
 					break;
 				}
 				case GLFW_RELEASE:
 				{
-					KeyReleasedEvent event(static_cast<KeyCode>(key));
+					KeyReleasedEvent event(key);
 					data.EventCallBack(event);
 					break;
 				}
 				case GLFW_REPEAT:
 				{
-					KeyPressedEvent event(static_cast<KeyCode>(key), 1);
+					KeyPressedEvent event(key, 1);
 					data.EventCallBack(event);
 					break;
 				}
@@ -147,7 +147,7 @@ namespace XEg
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-				KeyTypedEvent event(static_cast<KeyCode>(keycode));
+				KeyTypedEvent event(keycode);
 				data.EventCallBack(event);
 			});
 
@@ -159,13 +159,13 @@ namespace XEg
 				{
 				case GLFW_PRESS:
 				{
-					MouseButtonPressedEvent event(static_cast<MouseCode>(button));
+					MouseButtonPressedEvent event(button);
 					data.EventCallBack(event);
 					break;
 				}
 				case GLFW_RELEASE:
 				{
-					MouseButtonPressedEvent event(static_cast<MouseCode>(button));
+					MouseButtonPressedEvent event(button);
 					data.EventCallBack(event);
 					break;
 				}
