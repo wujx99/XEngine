@@ -41,16 +41,16 @@ namespace XEg
 		class CameraController : public ScriptaleEntity
 		{
 		public:
-			void OnCreate()
+			virtual void OnCreate() override
 			{
 				auto& transform = GetComponent<TransformComponent>().Transform;
 				transform[3][0] = rand() % 10 - 5.f;
 			}
-			void OnDestroy()
+			virtual void OnDestroy() override
 			{
 
 			}
-			void OnUpdate(TimeStep ts)
+			virtual void OnUpdate(TimeStep ts) override
 			{
 				auto& transform = GetComponent<TransformComponent>().Transform;
 				float speed = 5.f;
