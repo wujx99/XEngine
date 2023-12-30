@@ -35,21 +35,14 @@ namespace XEg
 	{
 		ScriptaleEntity* Instance = nullptr;
 
-		std::function<void()> InstantiateFunction;
-		std::function<void()> DestryInstanceFunction;
-
-		std::function<void(ScriptaleEntity*)> OnCreateFunction;
-		std::function<void(ScriptaleEntity*)> OnDestoryFunction;
-		std::function<void(ScriptaleEntity*, TimeStep)> OnUpdateFunction;
+		ScriptaleEntity* (*InstantiateScript)();
+		void (*DestroyScript)(NativeScriptComponent*);
 
 		template<typename T>
 		void Bind()
 		{
-			InstantiateFunction = [&]() {Instance = new T(); };
-			DestryInstanceFunction = [&]() {delete (T*)Instance; Instance = nullptr; };
-			OnCreateFunction = [](ScriptaleEntity* instance) {((T*)instance)->OnCreate(); };
-			OnDestoryFunction = [](ScriptaleEntity* instance) {((T*)instance)->OnDestroy(); };
-			OnUpdateFunction = [](ScriptaleEntity* instance, TimeStep ts) {((T*)instance)->OnUpdate(ts); };
+			InstantiateScript = []() {return static_cast<ScriptaleEntity*>( new T()); };
+			DestroyScript = [](NativeScriptComponent* nsc) {delete nsc->Instance; nsc->Instance = nullptr; };
 		}
 	};
 	struct TransformComponent
