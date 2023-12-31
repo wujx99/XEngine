@@ -13,6 +13,7 @@
 
 #include "XEngine/Core/Application.h"
 #include "XEngine/Core/Log.h"
+#include "XEngine/Core/Assert.h"
 
 #include "XEngine/Debug/Instrumentor.h"
 

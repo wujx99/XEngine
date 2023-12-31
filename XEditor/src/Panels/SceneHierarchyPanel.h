@@ -1,7 +1,7 @@
 #pragma once
 
 #include "XEngine/Core/Base.h"
-#include "XEngine/Core/Log.h"
+
 
 #include "XEngine/Scene/Scene.h"
 #include "XEngine/Scene/Entity.h"

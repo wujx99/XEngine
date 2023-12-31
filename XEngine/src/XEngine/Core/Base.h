@@ -22,13 +22,9 @@
 
 
 
-#ifdef XE_ENABLE_ASSERTS
-	#define XE_CORE_ASSERT(x, ...) {if(!(x)) { XE_CORE_ERROR("Assert failed: {0}", __VA_ARGS__); XE_DEBUGBREAK();}}
-	#define XE_ASSERT(x, ...) {if(!(x)) { XE_CLIENT_ERROR("Assert failed: {0}", __VA_ARGS__); XE_DEBUGBREAK();}}
-#else
-	#define XE_CORE_ASSERT(x, ...)
-	#define XE_CLIENT_ASSERT(x, ...)
-#endif 
+#define XE_EXPAND_MACRO(x) x
+
+#define XE_STRINGIFY_MACRO(x) #x
 
 
 #define BIT(x) (1<<x)
@@ -55,3 +51,6 @@ namespace XEg
 		return std::make_shared<T>(std::forward<Args>(args)...);
 	}
 }
+
+#include "XEngine/Core/Log.h"
+#include "XEngine/Core/Assert.h"
