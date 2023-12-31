@@ -29,6 +29,9 @@ namespace XEg
 		auto square = m_ActiveScene->CreateEntity("Green Square");
 		square.AddComponent<SpriteRendererComponent>(glm::vec4{ 0.f, 1.f, 0.f, 1.f });
 
+		auto redSquare = m_ActiveScene->CreateEntity("Red Square");
+		redSquare.AddComponent<SpriteRendererComponent>(glm::vec4{ 1.f, 0.f, 0.f, 1.f });
+
 		m_SquareEntity = square;
 
 		m_FirstCamera = m_ActiveScene->CreateEntity("Camera Entity");
