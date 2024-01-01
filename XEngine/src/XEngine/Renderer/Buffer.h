@@ -87,7 +87,7 @@ namespace XEg
 	{
 	public:
 		BufferLayout() {};
-		BufferLayout(const std::initializer_list<BufferElement>& bufferElements)
+		BufferLayout(std::initializer_list<BufferElement> bufferElements)
 			:m_BufferElements(bufferElements)
 		{
 			CalcStrideAndOffset();
