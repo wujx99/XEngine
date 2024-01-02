@@ -25,6 +25,12 @@ namespace XEg
 		tag.Tag = name.empty() ? "Entity" : name;
 		return entity;
 	}
+
+	void Scene::DestroyEntity(Entity entity)
+	{
+		m_Registry.destroy(entity);
+	}
+
 	void Scene::OnUpdate(TimeStep ts)
 	{
 		// update scripts
@@ -92,5 +98,35 @@ namespace XEg
 			}
 		}
 	}
+	template<typename T>
+	void Scene::OnComponentAdded(Entity entity, T& component)
+	{
+		static_assert(false);
+	}
 
+	template<>
+	void Scene::OnComponentAdded(Entity entity, TransformComponent& component)
+	{
+
+	}
+	template<>
+	void Scene::OnComponentAdded(Entity entity, CameraComponent& component)
+	{
+		component.Camera.SetViewportSize(m_ViewportWidth, m_ViewportHeight);
+	}
+	template<>
+	void Scene::OnComponentAdded(Entity entity, SpriteRendererComponent& component)
+	{
+
+	}
+	template<>
+	void Scene::OnComponentAdded(Entity entity, TagComponnent& component)
+	{
+
+	}
+	template<>
+	void Scene::OnComponentAdded(Entity entity, NativeScriptComponent& component)
+	{
+
+	}
 }
