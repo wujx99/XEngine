@@ -220,7 +220,7 @@ namespace XEg
 		
 		m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
 			
-		XE_CLIENT_WARN("Viewport Size: {0}, {1}", viewportPanelSize.x, viewportPanelSize.y);
+		//XE_CLIENT_WARN("Viewport Size: {0}, {1}", viewportPanelSize.x, viewportPanelSize.y);
 		uint64_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
 		ImGui::Image(reinterpret_cast<void*>(textureID), ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2(0, 1), ImVec2(1, 0));
 		ImGui::End();
@@ -276,24 +276,24 @@ namespace XEg
 
 	void EditorLayer::OpenScene()
 	{
-		std::string filepath = FileDialogs::OpenFile("XEngine Scene(*.XE)\0*.XE\0");
-		if (!filepath.empty())
+		std::optional<std::string> filepath = FileDialogs::OpenFile("XEngine Scene(*.XE)\0*.XE\0");
+		if (filepath)
 		{
 			m_ActiveScene = CreateRef<Scene>();
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 			SceneSerializer serializer(m_ActiveScene);
-			serializer.Deserialize(filepath);
+			serializer.Deserialize(filepath.value());
 		}
 	}
 
 	void EditorLayer::SaveSceneAs()
 	{
-		std::string filepath = FileDialogs::SaveFile("Hazel Scene (*.hazel)\0*.hazel\0");
-		if (!filepath.empty())
+		std::optional<std::string> filepath = FileDialogs::SaveFile("XEngine Scene (*.XE)\0*.XE\0");
+		if (filepath)
 		{
 			SceneSerializer serializer(m_ActiveScene);
-			serializer.Serialize(filepath);
+			serializer.Serialize(filepath.value());
 		}
 	}
 
