@@ -6,3 +6,6 @@
 	path = XEngine/vendor/imgui
 	url = git@github.com:TheCherno/imgui.git
 	branch = docking
+[submodule "XEngine/vendor/yaml-cpp"]
+	path = XEngine/vendor/yaml-cpp
+	url = git@github.com:TheCherno/yaml-cpp.git

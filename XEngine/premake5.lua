@@ -35,13 +35,15 @@ project "XEngine"
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.stb_image}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.yaml_cpp}"
 	}
 	links
 	{
 		"GLFW",
 		"Glad",
 		"ImGui",
+		"yaml-cpp",
 		"opengl32.lib",
 		"dwmapi.lib",
 	}
@@ -61,13 +63,12 @@ project "XEngine"
 		defines "XE_DEBUG"
 		runtime "Debug"
 		symbols "on"
-		optimize "Off"
 		
 	filter "configurations:Release"
 		defines "XE_RELEASE"
 		runtime "Release"
-		optimize "On"
-	filter "configurations:Debug"
+		optimize "on"
+	filter "configurations:Dist"
 		defines "XE_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
