@@ -31,6 +31,7 @@ IncludeDir["glm"] = "%{wks.location}/XEngine/vendor/glm"
 IncludeDir["stb_image"] = "%{wks.location}/XEngine/vendor/stb_image"
 IncludeDir["entt"] = "%{wks.location}/XEngine/vendor/entt/include"
 IncludeDir["yaml_cpp"] = "%{wks.location}/XEngine/vendor/yaml-cpp/include"
+IncludeDir["ImGuizmo"] = "%{wks.location}/XEngine/vendor/ImGuizmo"
 
 
 group "Dependencies"

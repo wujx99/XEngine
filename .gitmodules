@@ -9,3 +9,6 @@
 [submodule "XEngine/vendor/yaml-cpp"]
 	path = XEngine/vendor/yaml-cpp
 	url = git@github.com:TheCherno/yaml-cpp.git
+[submodule "XEngine/vendor/ImGuizmo"]
+	path = XEngine/vendor/ImGuizmo
+	url = git@github.com:TheCherno/ImGuizmo.git

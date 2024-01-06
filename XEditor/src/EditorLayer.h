@@ -44,6 +44,7 @@ namespace XEg
 
 		glm::vec4 m_SquareColor = { .2f, .3f, .8f, 1.f };
 
+		int m_GizmoType = -1;
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
 	};

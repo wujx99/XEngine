@@ -84,7 +84,7 @@ namespace XEg
 	static void SerializeEntity(YAML::Emitter& out, Entity entity)
 	{
 		out << YAML::BeginMap; // Entity
-		out << YAML::Key << "Entity" << YAML::Value << "1234455566";
+		out << YAML::Key << "Entity" << YAML::Value << "12837192831273";
 		if (entity.HasComponent<TagComponnent>())
 		{
 			out << YAML::Key << "TagComponent";
@@ -114,7 +114,7 @@ namespace XEg
 			out << YAML::Key << "Camera";
 			out << YAML::BeginMap;  // Camera
 			out << YAML::Key << "ProjectionType" << YAML::Value << (int)camera.GetProjectionType();
-			out << YAML::Key << "PerspectiveFOV" << YAML::Value << (int)camera.GetPerspectiveVerticalFOV();
+			out << YAML::Key << "PerspectiveFOV" << YAML::Value << camera.GetPerspectiveVerticalFOV();
 			out << YAML::Key << "PerspectiveNear" << YAML::Value << camera.GetPerspectiveNearClip();
 			out << YAML::Key << "PerspectiveFar" << YAML::Value << camera.GetPerspectiveFarClip();
 			out << YAML::Key << "OrthographicSize" << YAML::Value << camera.GetOrthographicSize();

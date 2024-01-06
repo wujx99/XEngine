@@ -19,7 +19,8 @@ project "XEditor"
 		"%{wks.location}/XEngine/src",
 		"%{wks.location}/XEngine/vendor",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.ImGuizmo}",
 	}
 
 	links
