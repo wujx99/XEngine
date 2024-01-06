@@ -1,9 +1,8 @@
 #pragma once
+#include "XEngine/Core/TimeStep.h"
+#include "XEngine/Renderer/EditorCamera.h"
 
 #include "entt.hpp"
-
-#include "XEngine/Core/TimeStep.h"
-
 namespace XEg
 {
 	class Entity;
@@ -17,7 +16,8 @@ namespace XEg
 		Entity CreateEntity(const std::string& name = std::string());
 		void DestroyEntity(Entity entity);
 
-		void OnUpdate(TimeStep ts);
+		void OnUpdateRuntime(TimeStep ts);
+		void OnUpdateEditor(TimeStep ts, EditorCamera& camera);
 		void OnViewportResize(uint32_t width, uint32_t height);
 
 		Entity GetPrimaryCameraEntity();

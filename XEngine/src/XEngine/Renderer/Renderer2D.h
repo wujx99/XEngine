@@ -2,6 +2,7 @@
 #include "XEngine/Renderer/OrthographicCamera.h"
 #include "XEngine/Renderer/Texture.h"
 #include "XEngine/Renderer/Camera.h"
+#include "XEngine/Renderer/EditorCamera.h"
 namespace XEg
 {
 
@@ -13,6 +14,7 @@ namespace XEg
 		static void Shutdown();
 
 		static void BeginScene(const Camera& camera, const glm::mat4& transform);
+		static void BeginScene(const EditorCamera& camera);
 		static void BeginScene(OrthographicCamera& camera);
 		static void EndScene();
 		static void Flush();

@@ -2,6 +2,7 @@
 
 #include "XEngine.h"
 #include "Panels/SceneHierarchyPanel.h"
+#include "XEngine/Renderer/EditorCamera.h"
 
 namespace XEg
 {
@@ -36,6 +37,7 @@ namespace XEg
 		Entity m_SecondCamera;
 
 		bool m_PrimaryCamera = true;
+		EditorCamera m_EditorCamera;
 
 		Ref<Texture2D> m_CheckerboardTexture;
 

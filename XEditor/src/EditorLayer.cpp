@@ -30,6 +30,7 @@ namespace XEg
 		m_Framebuffer = Framebuffer::Create(fbSpec);
 
 		m_ActiveScene = CreateRef<Scene>();
+		m_EditorCamera = EditorCamera(30.f, 1.778f, 0.1f, 1000.f);
 #if 0
 
 		auto square = m_ActiveScene->CreateEntity("Green Square");
@@ -100,12 +101,13 @@ namespace XEg
 		{
 			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
+			m_EditorCamera.SetViewPortSize(m_ViewportSize.x, m_ViewportSize.y);
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 
 		if (m_ViewportFocused)
 			m_CameraController.OnUpdate(ts);
-
+		m_EditorCamera.OnUpdate(ts);
 		// Render
 		Renderer2D::ResetStats();
 		{
@@ -119,7 +121,7 @@ namespace XEg
 		
 		//update scene
 
-		m_ActiveScene->OnUpdate(ts);
+		m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
 			
 	
 		m_Framebuffer->Unbind();
@@ -238,10 +240,15 @@ namespace XEg
 
 			ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
 			// Camera
-			auto cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
+			// Runtime Camera
+			/*auto cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
 			const auto& camera = cameraEntity.GetComponent<CameraComponent>().Camera;
 			const glm::mat4& cameraProjection = camera.GetProjection();
-			glm::mat4 cameraView = glm::inverse(cameraEntity.GetComponent<TransformComponent>().GetTransform());
+			glm::mat4 cameraView = glm::inverse(cameraEntity.GetComponent<TransformComponent>().GetTransform());*/
+
+			// editor camera
+			const glm::mat4& cameraProjection = m_EditorCamera.GetProjection();
+			glm::mat4 cameraView = m_EditorCamera.GetViewMatrix();
 
 			// Entity transform
 			auto& tc = selectedEntity.GetComponent<TransformComponent>();
@@ -279,6 +286,7 @@ namespace XEg
 	void EditorLayer::OnEvent(Event& event)
 	{
 		m_CameraController.OnEvent(event);
+		m_EditorCamera.OnEvent(event);
 		EventDispatcher dispatcher(event);
 		dispatcher.Dispatch<KeyPressedEvent>(XE_BIND_EVENT_FN(EditorLayer::OnKeyPressed));
 	}
