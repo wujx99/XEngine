@@ -35,6 +35,7 @@ namespace XEg
 		Entity m_SquareEntity;
 		Entity m_FirstCamera;
 		Entity m_SecondCamera;
+		Entity m_HoveredEntity;
 
 		bool m_PrimaryCamera = true;
 		EditorCamera m_EditorCamera;
