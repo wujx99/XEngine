@@ -43,6 +43,7 @@ namespace XEg
 
 		bool m_ViewportFocused = false, m_ViewportHovered = false;
 		glm::vec2 m_ViewportSize{ 0.f, 0.f };
+		glm::vec2 m_ViewportBounds[2];
 
 		glm::vec4 m_SquareColor = { .2f, .3f, .8f, 1.f };
 
