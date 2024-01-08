@@ -55,7 +55,7 @@ namespace XEg
 		{
 			std::string cacheDirectory = GetCacheDirectory();
 			if (!std::filesystem::exists(cacheDirectory))
-				std::filesystem::create_directories(cacheDirectory);
+				XE_CORE_ASSERT(!std::filesystem::create_directories(cacheDirectory));
 		}
 		static const char* GLShaderStageCachedOpenGLFileExtension(uint32_t stage)
 		{

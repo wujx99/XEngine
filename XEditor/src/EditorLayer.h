@@ -2,6 +2,7 @@
 
 #include "XEngine.h"
 #include "Panels/SceneHierarchyPanel.h"
+#include "Panels/ContentBrowserPanel.h"
 #include "XEngine/Renderer/EditorCamera.h"
 
 namespace XEg
@@ -52,5 +53,6 @@ namespace XEg
 		int m_GizmoType = -1;
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
+		ContentBrowserPanel m_ContentBrowserPanel;
 	};
 }
