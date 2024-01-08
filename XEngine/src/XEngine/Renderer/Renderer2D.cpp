@@ -125,8 +125,8 @@ namespace XEg
 	{
 		XE_PROFILE_FUNCTION();
 
-		s_Data.TextureShader->Bind();
-		s_Data.TextureShader->SetMat4("u_ViewProjection", camera.GetViewProjMatrix());
+		s_Data.CameraBuffer.ViewProjection = camera.GetViewProjMatrix();
+		s_Data.CameraUniformBuffer->SetData(&s_Data.CameraBuffer, sizeof(Renderer2DData::CameraData));
 
 		StartBatch();
 		

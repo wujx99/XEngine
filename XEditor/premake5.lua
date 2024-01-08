@@ -38,7 +38,10 @@ project "XEditor"
 		defines "XE_DEBUG"
 		runtime "Debug"
 		symbols "on"
-		
+		postbuildcommands
+		{
+			"{COPYDIR} \"%{LibraryDir.VulkanSDK_DebugDLL}\" \"%{cfg.targetdir}\""
+		}
 	filter "configurations:Release"
 		defines "XE_RELEASE"
 		runtime "Release"
