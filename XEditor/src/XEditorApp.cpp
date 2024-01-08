@@ -8,8 +8,8 @@ namespace XEg
 	class XEditor : public Application
 	{
 	public:
-		XEditor()
-			:Application("XEngine Editor")
+		XEditor(ApplicationCommandLineArgs args)
+			:Application("XEngine Editor", args)
 		{
 			PushLayer(new EditorLayer());
 		}
@@ -18,9 +18,9 @@ namespace XEg
 
 	};
 
-	Application* CreateApplication()
+	Application* CreateApplication(ApplicationCommandLineArgs args)
 	{
-		return new XEditor();
+		return new XEditor(args);
 	}
 }
 

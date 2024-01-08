@@ -1,4 +1,5 @@
 include "./vendor/premake/premake_customization/solution_items.lua"
+include "Dependencies.lua"
 
 workspace "XEngine"
 	architecture "x86_64"
@@ -22,16 +23,6 @@ workspace "XEngine"
 	}
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
--- Include directories relative to root folder (solution directory)
-IncludeDir = {}
-IncludeDir["GLFW"] = "%{wks.location}/XEngine/vendor/GLFW/include"
-IncludeDir["Glad"] = "%{wks.location}/XEngine/vendor/Glad/include"
-IncludeDir["ImGui"] = "%{wks.location}/XEngine/vendor/imgui"
-IncludeDir["glm"] = "%{wks.location}/XEngine/vendor/glm"
-IncludeDir["stb_image"] = "%{wks.location}/XEngine/vendor/stb_image"
-IncludeDir["entt"] = "%{wks.location}/XEngine/vendor/entt/include"
-IncludeDir["yaml_cpp"] = "%{wks.location}/XEngine/vendor/yaml-cpp/include"
-IncludeDir["ImGuizmo"] = "%{wks.location}/XEngine/vendor/ImGuizmo"
 
 
 group "Dependencies"

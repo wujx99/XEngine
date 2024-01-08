@@ -138,6 +138,7 @@ namespace XEg
 	template<>
 	void Scene::OnComponentAdded(Entity entity, CameraComponent& component)
 	{
+		if (m_ViewportWidth > 0 && m_ViewportHeight > 0)
 		component.Camera.SetViewportSize(m_ViewportWidth, m_ViewportHeight);
 	}
 	template<>
