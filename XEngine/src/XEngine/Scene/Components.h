@@ -2,6 +2,7 @@
 
 #include "SceneCamera.h"
 #include "XEngine/Scene/ScriptableEntity.h"
+#include "XEngine/Renderer/Texture.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -73,6 +74,9 @@ namespace XEg
 	struct SpriteRendererComponent
 	{
 		glm::vec4 Color{ 1.f, 1.f, 1.f, 1.f };
+
+		Ref<Texture2D> Texture;
+		float TilingFactor = 1.f;
 
 		SpriteRendererComponent() = default;
 		SpriteRendererComponent(const SpriteRendererComponent&) = default;
