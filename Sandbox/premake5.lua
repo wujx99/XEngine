@@ -22,7 +22,10 @@ project "Sandbox"
 		"%{IncludeDir.entt}"
 
 	}
-
+	defines
+	{
+		"_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING"
+	}
 	links
 	{
 		"XEngine"

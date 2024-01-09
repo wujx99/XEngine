@@ -25,7 +25,8 @@ project "XEngine"
 	defines
 	{
 		"_CRT_SECURE_NO_WARNINGS",
-		"GLFW_INCLUDE_NONE"
+		"GLFW_INCLUDE_NONE",
+		"_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING"
 	}
 
 	includedirs
