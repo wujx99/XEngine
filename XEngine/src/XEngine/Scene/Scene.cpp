@@ -2,6 +2,7 @@
 
 #include "Scene.h"
 #include "XEngine/Scene/Components.h"
+#include "XEngine/Scene/ScriptableEntity.h"
 #include "XEngine/Renderer/Renderer2D.h"
 
 #include <glm/glm.hpp>
@@ -35,7 +36,13 @@ namespace XEg
 	}
 	Entity Scene::CreateEntity(const std::string& name)
 	{
+		return CreateEntityWithUUID(UUID(), name);
+	}
+
+	XEg::Entity Scene::CreateEntityWithUUID(UUID uuid, const std::string& name /*= std::string()*/)
+	{
 		Entity entity = { m_Registry.create(), this }; // use this to bind Scene
+		entity.AddComponent<IDComponent>(uuid);
 		entity.AddComponent<TransformComponent>();
 		auto& tag = entity.AddComponent<TagComponnent>();
 		tag.Tag = name.empty() ? "Entity" : name;
@@ -210,7 +217,11 @@ namespace XEg
 	{
 		static_assert(false);
 	}
+	template<>
+	void Scene::OnComponentAdded<IDComponent>(Entity entity, IDComponent& component)
+	{
 
+	}
 	template<>
 	void Scene::OnComponentAdded(Entity entity, TransformComponent& component)
 	{
@@ -240,10 +251,11 @@ namespace XEg
 	template<>
 	void Scene::OnComponentAdded<Rigidbody2DComponent>(Entity entity, Rigidbody2DComponent& component)
 	{
-	}
 
+	}
 	template<>
 	void Scene::OnComponentAdded<BoxCollider2DComponent>(Entity entity, BoxCollider2DComponent& component)
 	{
+
 	}
 }

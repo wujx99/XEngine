@@ -1,7 +1,7 @@
 #pragma once
 
 #include "SceneCamera.h"
-#include "XEngine/Scene/ScriptableEntity.h"
+#include "XEngine/Core/UUID.h"
 #include "XEngine/Renderer/Texture.h"
 
 #include <glm/glm.hpp>
@@ -12,6 +12,12 @@
 
 namespace XEg
 {
+	struct IDComponent
+	{
+		UUID ID;
+		IDComponent() = default;
+		IDComponent(const IDComponent&) = default;
+	};
 	struct TagComponnent
 	{
 		std::string Tag;
@@ -35,6 +41,9 @@ namespace XEg
 		
 
 	};
+
+	// Forward declaration
+	class ScriptaleEntity;
 
 	struct NativeScriptComponent
 	{
