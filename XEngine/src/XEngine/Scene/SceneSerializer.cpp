@@ -139,11 +139,11 @@ namespace XEg
 	{
 		out << YAML::BeginMap; // Entity
 		out << YAML::Key << "Entity" << YAML::Value << entity.GetUUID();
-		if (entity.HasComponent<TagComponnent>())
+		if (entity.HasComponent<TagComponent>())
 		{
 			out << YAML::Key << "TagComponent";
 			out << YAML::BeginMap; // TagComponent
-			auto& tag = entity.GetComponent<TagComponnent>().Tag;
+			auto& tag = entity.GetComponent<TagComponent>().Tag;
 			out << YAML::Key << "Tag" << YAML::Value << tag;
 			out << YAML::EndMap;   // TagComponent
 		}

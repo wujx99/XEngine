@@ -18,13 +18,13 @@ namespace XEg
 		IDComponent() = default;
 		IDComponent(const IDComponent&) = default;
 	};
-	struct TagComponnent
+	struct TagComponent
 	{
 		std::string Tag;
 
-		TagComponnent() = default;
-		TagComponnent(const TagComponnent&) = default;
-		TagComponnent(const std::string& tag)
+		TagComponent() = default;
+		TagComponent(const TagComponent&) = default;
+		TagComponent(const std::string& tag)
 			:Tag(tag)
 		{
 
