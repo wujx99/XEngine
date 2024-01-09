@@ -27,6 +27,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 group "Dependencies"
 	include "vendor/premake"
+	include "XEngine/vendor/Box2D"
 	include "XEngine/vendor/GLFW"
 	include "XEngine/vendor/Glad"
 	include "XEngine/vendor/imgui"

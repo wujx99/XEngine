@@ -12,3 +12,6 @@
 [submodule "XEngine/vendor/ImGuizmo"]
 	path = XEngine/vendor/ImGuizmo
 	url = git@github.com:TheCherno/ImGuizmo.git
+[submodule "XEngine/vendor/Box2D"]
+	path = XEngine/vendor/Box2D
+	url = git@github.com:TheCherno/box2d.git
