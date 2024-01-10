@@ -43,7 +43,6 @@ namespace XEg
 		}
 		m_EditorCamera = EditorCamera(30.f, 1.778f, 0.1f, 1000.f);
 #if 0
-
 		auto square = m_ActiveScene->CreateEntity("Green Square");
 		square.AddComponent<SpriteRendererComponent>(glm::vec4{ 0.f, 1.f, 0.f, 1.f });
 
@@ -118,6 +117,7 @@ namespace XEg
 		
 		// Render
 		Renderer2D::ResetStats();
+
 		{
 			XE_PROFILE_SCOPE("Render Prep");
 			m_Framebuffer->Bind();

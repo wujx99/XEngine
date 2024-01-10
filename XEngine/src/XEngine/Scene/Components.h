@@ -93,6 +93,14 @@ namespace XEg
 			: Color(color) {}
 	};
 
+	struct CircleRendererComponent
+	{
+		glm::vec4 Color{ 1.f, 1.f, 1.f, 1.f };
+		float Thickness = 1.f;
+		float Fade = 0.005f;
+		CircleRendererComponent() = default;
+		CircleRendererComponent(const CircleRendererComponent&) = default;
+	};
 	// Physics
 	struct Rigidbody2DComponent
 	{
